@@ -1,0 +1,16 @@
+api\user\register\RegisterSuccess.class
+api\game\Game.class
+api\question\Question.class
+api\user\login\LoginFailed$LoginFailedBuilder.class
+api\user\User.class
+api\user\register\RegisteredUsers.class
+api\user\login\LoginRequest$LoginRequestBuilder.class
+api\user\User$UserBuilder.class
+api\user\register\RegisterSuccess$RegisterSuccessBuilder.class
+api\user\login\LoginSuccessful.class
+api\user\login\LoginSuccessful$LoginSuccessfulBuilder.class
+api\user\login\LoginFailed.class
+api\user\register\RegisterRequest$RegisterRequestBuilder.class
+api\user\login\LoginRequest.class
+api\user\register\RegisterRequest.class
+api\user\register\RegisteredUsers$RegisteredUsersBuilder.class

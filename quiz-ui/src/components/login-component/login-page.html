@@ -1,0 +1,19 @@
+<div>
+    <div class="header">
+        <div id="welcome">Welcome to QuizApp</div>
+    </div>
+    <div id="main-container">
+        <div class="container">
+            <label for="name"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" id="name" ng-model="username"/>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" id="psw" ng-model="password"/>
+            <button ng-click="loginCtrl.login()">Login</button>
+        </div>
+
+        <div class="container">
+            <button type="button" class="btn">Register</button>
+        </div>
+
+    </div>
+</div>

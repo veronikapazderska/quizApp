@@ -1,0 +1,150 @@
+/* Bordered form */
+
+label {
+    color: white;
+}
+
+@font-face {
+    font-family: SweetSensations;
+    src: url(src/assets/SweetSensations.ttf);
+}
+@font-face {
+    font-family: RobagaRounded;
+    src: url(src/assets/RobagaRounded.otf);
+}
+
+form {
+    border: 3px solid #f1f1f1;
+}
+
+.quiz-container {
+    border: 3px solid #f1f1f1;
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: auto;
+    color: white;
+    text-align: center;
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+#question-title {
+    font-family: RobagaRounded;
+    font-size: 3em;
+    padding: 0.5em;
+}
+.quiz-btn {
+    background-color: transparent;
+    border: 1px solid white;
+    width: 90%;
+    margin-bottom: 1em;
+    border-radius: 24px;
+}
+#send-answer-btn {
+    width: 60%;
+    margin: 1em;
+    font-family: RobagaRounded;
+    font-size: 1.5em;
+    border-radius: 12px;
+}
+
+h3{
+    color: white;
+    text-align: center;
+}
+
+/* Full-width inputs */
+* {box-sizing: border-box;}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#welcome {
+    text-align: center;
+    font-family: SweetSensations;
+    color: white;
+    font-size: 8em;
+}
+
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+#main-container  {
+    padding-top: 2em;
+    text-align: center;
+    width: 40%;
+    height: 100%;
+    margin: auto;
+    border: 3px solid #f1f1f1;
+}
+
+body {
+    background: #FFF url("src/assets/Quiz-BAckground-2.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #636262;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+}
+:focus {
+    outline:none !important;
+}
+.quiz-btn:focus {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.btn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: white;
+    color: #000;
+}
+
+.container {
+    padding: 16px;
+}
+
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .btn {
+        width: 100%;
+    }
+}
