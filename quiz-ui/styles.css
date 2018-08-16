@@ -150,6 +150,10 @@ button:hover {
     padding: 0px 16px 5px 16px;
 }
 
+.error-msg {
+    color: yellow;
+}
+
 #age {
     width: 100%;
     height: 3em;

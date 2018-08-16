@@ -23,7 +23,7 @@ app.service('stompService', function () {
     this.subscribe = function (topic, callback) {
         if (isConnected) {
             client.subscribe(topic, function (message) {
-                callback(JSON.parse(message));
+               callback(JSON.parse(message.body));
             })
         } else {
             subscriptions.push({"topic": topic, "callback": callback})

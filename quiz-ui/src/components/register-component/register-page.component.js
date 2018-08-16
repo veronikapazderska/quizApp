@@ -2,7 +2,7 @@ var app = angular.module("app");
 app.controller('registerController', ['$scope', '$rootScope', '$location', 'stompService', function ($scope, $rootScope, $location, stompService) {
 
     var self = this;
-    //var errorMessage;
+    self.errorMessage;
     self.register = function () {
         var user = {};
         user.username = $scope.username;
@@ -17,11 +17,12 @@ app.controller('registerController', ['$scope', '$rootScope', '$location', 'stom
     };
 
     self.registrationFailed = function() {
+        console.log("Metoda se vika");
         stompService.subscribe("/topic/regFailed/" + $scope.username, function (registerFailed) {
-            $scope.errorMessage = registerFailed.message;
+            self.errorMessage = registerFailed.message;
             $scope.$apply();
         });
-    }
+    };
 
     self.registrationSucceeded = function () {
         stompService.subscribe("/topic/regSuccess/" + $scope.username, function (registerSuccessful) {
