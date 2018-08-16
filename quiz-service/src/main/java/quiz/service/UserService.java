@@ -67,7 +67,6 @@ public class UserService {
         }
     }
 
-
     public void registerUser(RegisterRequest registerRequest) {
         if (checkForUsername(registerRequest.getUsername())) {
             final RegisterFailed registerFailed = RegisterFailed.builder().message("User with such username already exists").build();

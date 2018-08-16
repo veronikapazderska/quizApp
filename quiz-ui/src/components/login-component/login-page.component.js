@@ -9,7 +9,6 @@ app.controller('loginController',['$scope', '$location', 'stompService', functio
         stompService.publish('/app/loginRequest', user);
     };
     self.redirectToRegister = function(){
-        console.log("Redirect to register");
         $location.path('/register');
     };
 

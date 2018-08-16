@@ -15,5 +15,10 @@ app.config(function($routeProvider) {
             templateUrl: 'src/components/register-component/register-page.html',
             controller: 'registerController',
             controllerAs:'regCtrl'
+        })
+        .when('/main', {
+            templateUrl: 'src/components/main-page-component/main-page.html',
+            controller: 'mainPageController',
+            controllerAs: 'mainCtrl'
         });
 });

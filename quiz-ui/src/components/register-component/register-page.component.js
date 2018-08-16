@@ -1,5 +1,5 @@
 var app = angular.module("app");
-app.controller('registerController', ['$scope', '$location', 'stompService', function ($scope, $location, stompService) {
+app.controller('registerController', ['$scope', '$rootScope', '$location', 'stompService', function ($scope, $rootScope, $location, stompService) {
 
     var self = this;
     self.register = function () {
@@ -9,11 +9,19 @@ app.controller('registerController', ['$scope', '$location', 'stompService', fun
         user.firstName = $scope.firstName;
         user.lastName = $scope.lastName;
         user.age = $scope.age;
+
         stompService.publish('/app/registerRequest', user);
+
     };
 
+    self.registrationSucceeded = function() {
+        stompService.subscribe("/topic/regSuccess/" + $scope.username, function (registerSuccessful) {
+            $rootScope.registeredUser = registerSuccessful;
+            $location.path('/mainPage');
+        });
+    }
+
     self.redirectToLogin = function () {
-        console.log("Redirect to login");
         $location.path('/');
     };
     stompService.subscribe("/topic/test", function (message) {
