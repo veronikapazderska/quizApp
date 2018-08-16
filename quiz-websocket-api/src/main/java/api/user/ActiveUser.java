@@ -6,12 +6,12 @@ import lombok.*;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ToString
-public class User {
+public class ActiveUser {
+
     public String username;
-    public String password;
     public String firstName;
     public String lastName;
     public int age;
     public int points;
-    public boolean isActive;
+
 }

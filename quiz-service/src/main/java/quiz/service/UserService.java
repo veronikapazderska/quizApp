@@ -1,5 +1,7 @@
 package quiz.service;
 
+import api.user.ActiveUser;
+import api.user.ActiveUsers;
 import api.user.User;
 import api.user.login.LoginFailed;
 import api.user.login.LoginRequest;
@@ -27,6 +29,8 @@ public class UserService {
 
     private List<User> registeredUsers = new ArrayList<>();
 
+    private ActiveUsers activeUsers = ActiveUsers.builder().activeUsers(new ArrayList<>()).build();
+
     @PostConstruct
     public void init() {
         this.registeredUsers.add(User.builder()
@@ -34,19 +38,23 @@ public class UserService {
                 .firstName("Veronika")
                 .lastName("Pazderska")
                 .age(22)
+                .isActive(false)
                 .points(150).build());
         this.registeredUsers.add(User.builder()
                 .username("iliyan").password("iliyan")
                 .firstName("Iliyan")
                 .lastName("Bachiyski")
                 .age(23)
+                .isActive(false)
                 .points(100).build());
         this.registeredUsers.add(User.builder()
                 .username("stanka").password("stanka")
                 .firstName("Stanislava")
                 .lastName("Zhelyazkova")
                 .age(23)
-                .points(120).build());
+                .points(120)
+                .isActive(false)
+                .build());
     }
 
 
@@ -57,7 +65,10 @@ public class UserService {
             if (u != null) {
                 if (u.getPassword().equals(loginRequest.getPassword())) {
                     final LoginSuccessful loginSuccessful = LoginSuccessful.builder()
-                            .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints()).build();
+                            .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints())
+                            .isActive(true).build();
+                    this.activeUsers.activeUsers.add(ActiveUser.builder().username(u.getUsername())
+                    .firstName(u.getFirstName()).lastName(u.getLastName()).age(u.getAge()).points(u.getPoints()).build());
                     messagingTemplate.convertAndSend("/topic/logSuccess/" + loginRequest.getUsername(), loginSuccessful);
                 } else {
                     final LoginFailed loginFailed = LoginFailed.builder().message("Invalid Credentials!").build();
@@ -71,12 +82,12 @@ public class UserService {
         if(checkUserRegistration(registerRequest)) {
             final User u = User.builder().username(registerRequest.getUsername()).password(registerRequest.getPassword())
                     .firstName(registerRequest.getFirstName()).lastName(registerRequest.getLastName()).age(registerRequest.getAge())
-                    .points(0).build();
+                    .points(0).isActive(true).build();
             registeredUsers.add(u);
             final RegisterSuccessful registerSuccessful = RegisterSuccessful.builder().username(registerRequest.getUsername())
                     .password(registerRequest.getPassword()).firstName(registerRequest.getFirstName())
                     .lastName(registerRequest.getLastName()).age(registerRequest.getAge())
-                    .points(0).build();
+                    .points(0).isActive(true).build();
             final String topic = "/topic/regSuccess/" + registerRequest.getUsername();
             this.logger.info("Topic: {}", topic);
             messagingTemplate.convertAndSend(topic, registerSuccessful);

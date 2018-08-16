@@ -13,4 +13,5 @@ public class RegisterRequest {
     public final String lastName;
     public final int age;
     public final int points;
+    public final boolean isActive;
 }
