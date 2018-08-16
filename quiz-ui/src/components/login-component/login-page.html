@@ -1,70 +1,52 @@
-
-    <div class="row">
-        <div class="col-lg-10 offset-lg-1">
-            <div class="row justify-content-lg-center">
-                <div id="welcome">Welcome To QuizApp</div>
-            </div>
+<div class="row">
+    <div class="col-lg-10 offset-lg-1">
+        <div class="row justify-content-lg-center">
+            <div id="welcome">Welcome To QuizApp</div>
         </div>
     </div>
+</div>
 
-    <!--<div id="main-container">
-        <div class="container">
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 quiz-container">
+        <div class="row justify-content-lg-center">
             <label for="name"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" id="name" ng-model="username"/>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <input type="text" placeholder="Enter Username" id="name" ng-model="username"/>
+            </div>
+        </div>
+
+        <div class="row justify-content-lg-center">
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" ng-model="password"/>
-            <button ng-click="loginCtrl.login()">Login</button>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <input type="password" placeholder="Enter Password" id="psw" ng-model="password"/>
+            </div>
+        </div>
+
+        <div class="row justify-content-lg-center">
+            <div class="col-lg-6">
+                <button class="reg-log-btn" ng-click="loginCtrl.login()">
+                    Login
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-lg-center">
             <div id="if-new">Or if you are new...</div>
         </div>
 
-        <div class="container" id="reg-container">
-            <button type="button" class="reg-btn">Register</button>
+        <div class="row justify-content-lg-center">
+            <div class="col-lg-6">
+                <button class="reg-log-btn" ng-click="loginCtrl.redirectToRegister()">
+                    Register
+                </button>
+            </div>
         </div>
 
-    </div> -->
 
-    <div class="row">
-        <div class="col-lg-4 offset-lg-4 quiz-container">
-            <div class="row justify-content-lg-center">
-                <label for="name"><b>Username</b></label>
-            </div>
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <input type="text" placeholder="Enter Username" id="name" ng-model="username"/>
-                </div>
-            </div>
-
-            <div class="row justify-content-lg-center">
-                <label for="psw"><b>Password</b></label>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <input type="password" placeholder="Enter Password" id="psw" ng-model="password"/>
-                </div>
-            </div>
-
-            <div class="row justify-content-lg-center">
-                <div class="col-lg-6">
-                    <button class="reg-log-btn" ng-click="loginCtrl.login()">
-                        Login
-                    </button>
-                </div>
-            </div>
-
-            <div class="row justify-content-lg-center">
-                <div id="if-new">Or if you are new...</div>
-            </div>
-
-            <div class="row justify-content-lg-center">
-                <div class="col-lg-6">
-                    <button class="reg-log-btn" ng-click="loginCtrl.redirectToRegister()">
-                        Register
-                    </button>
-                </div>
-            </div>
-
-
-
-        </div>
     </div>
+</div>

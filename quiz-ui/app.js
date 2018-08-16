@@ -3,7 +3,8 @@ app.config(function($routeProvider) {
     $routeProvider
         .when("/takeQuiz", {
             templateUrl : "src/components/quiz-component/quiz-page.html",
-            controller: "quizCtrl"
+            controller: 'quizController',
+            controllerAs: "quizCtrl"
         })
         .when("/", {
             templateUrl: 'src/components/login-component/login-page.html',
