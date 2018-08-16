@@ -2,11 +2,14 @@ var app = angular.module("app");
 app.controller('registerController',['$scope', 'stompService', function ($scope, stompService) {
 
     var self = this;
-    self.login = function () {
+    self.register = function () {
         var user = {};
         user.username = $scope.username;
         user.password = $scope.password;
-        stompService.publish('/app/loginRequest', user);
+        user.firstName = $scope.firstName;
+        user.lastName = $scope.lastName;
+        user.age = $scope.age;
+        stompService.publish('/app/registerRequest', user);
     };
 
     stompService.subscribe("/topic/test", function (message) {

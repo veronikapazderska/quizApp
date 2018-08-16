@@ -4,8 +4,9 @@ import api.user.User;
 import api.user.login.LoginFailed;
 import api.user.login.LoginRequest;
 import api.user.login.LoginSuccessful;
+import api.user.register.RegisterFailed;
 import api.user.register.RegisterRequest;
-import api.user.register.RegisteredUsers;
+import api.user.register.RegisterSuccessful;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,15 +52,14 @@ public class UserService {
 
     public void checkLogin(LoginRequest loginRequest) {
 
-        if(checkForUsername(loginRequest.getUsername())){
+        if (checkForUsername(loginRequest.getUsername())) {
             User u = findUserByUsername(loginRequest.getUsername());
-            if(u!=null){
-                if(u.getPassword().equals(loginRequest.getPassword())){
+            if (u != null) {
+                if (u.getPassword().equals(loginRequest.getPassword())) {
                     final LoginSuccessful loginSuccessful = LoginSuccessful.builder()
                             .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints()).build();
                     messagingTemplate.convertAndSend("/topic/logSuccess/" + loginRequest.getUsername(), loginSuccessful);
-                }
-                else {
+                } else {
                     final LoginFailed loginFailed = LoginFailed.builder().message("Invalid Credentials!").build();
                     messagingTemplate.convertAndSend("topic/logFailed/" + loginRequest.getUsername(), loginFailed);
                 }
@@ -67,23 +67,47 @@ public class UserService {
         }
     }
 
+
     public void registerUser(RegisterRequest registerRequest) {
-
-
-
+        if (checkForUsername(registerRequest.getUsername())) {
+            final RegisterFailed registerFailed = RegisterFailed.builder().message("User with such username already exists").build();
+            messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
+            return;
+        }
+        if (registerRequest.getUsername() == null || registerRequest.getUsername().isEmpty() || registerRequest.getUsername().length() < 4) {
+            final RegisterFailed registerFailed = RegisterFailed.builder().message("Invalid username").build();
+            messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
+            return;
+        }
+        if (registerRequest.getPassword() == null || registerRequest.getPassword().isEmpty() || registerRequest.getPassword().length() < 8) {
+            final RegisterFailed registerFailed = RegisterFailed.builder().message("Invalid password").build();
+            messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
+            return;
+        }
+        if (registerRequest.getAge() < 14) {
+            final RegisterFailed registerFailed = RegisterFailed.builder().message("User not old enough to join the game").build();
+            messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
+            return;
+        }
+        final RegisterSuccessful registerSuccessful = RegisterSuccessful.builder().username(registerRequest.getUsername())
+                .password(registerRequest.getPassword()).firstName(registerRequest.getFirstName())
+                .lastName(registerRequest.getLastName()).age(registerRequest.getAge())
+                .points(0).build();
+        messagingTemplate.convertAndSend("topic/regSuccess/" + registerRequest.getUsername(), registerSuccessful);
     }
 
     private boolean checkForUsername(String username) {
-        for(User u : registeredUsers) {
-            if(u.getUsername().equals(username)){
+        for (User u : registeredUsers) {
+            if (u.getUsername().equals(username)) {
                 return true;
             }
         }
         return false;
     }
+
     private User findUserByUsername(String username) {
-        for(User u : registeredUsers) {
-            if(u.getUsername().equals(username)){
+        for (User u : registeredUsers) {
+            if (u.getUsername().equals(username)) {
                 return u;
             }
         }

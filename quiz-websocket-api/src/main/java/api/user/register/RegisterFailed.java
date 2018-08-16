@@ -6,6 +6,6 @@ import lombok.*;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ToString
-public class RegisterSuccess {
-
+public class RegisterFailed {
+    public final String message;
 }
