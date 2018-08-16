@@ -13,7 +13,6 @@ label {
     src: url(src/assets/RobagaRounded.otf);
 }
 
-
 .quiz-container {
     border: 3px solid #f1f1f1;
     display: flex;
@@ -65,6 +64,8 @@ body {
     font-family: SweetSensations;
     color: white;
     font-size: 8em;
+    width: 60%;
+    margin: auto;
 }
 
 @media screen and (max-width: 500px) {
@@ -156,6 +157,13 @@ button:hover {
 }
  #reg-container {
      padding-bottom: 20px;
+ }
+ .log-out-btn {
+     width: 6%;
+     background-color: white;
+     color: black;
+     opacity: 0.9;
+     float: right;
  }
 
 /* Change styles for span and cancel button on extra small screens */

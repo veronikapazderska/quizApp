@@ -89,6 +89,10 @@ public class UserService {
             messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
             return;
         }
+        User u = User.builder().username(registerRequest.getUsername()).password(registerRequest.getPassword())
+                .firstName(registerRequest.getFirstName()).lastName(registerRequest.getLastName()).age(registerRequest.getAge())
+                .points(0).build();
+        registeredUsers.add(u);
         final RegisterSuccessful registerSuccessful = RegisterSuccessful.builder().username(registerRequest.getUsername())
                 .password(registerRequest.getPassword()).firstName(registerRequest.getFirstName())
                 .lastName(registerRequest.getLastName()).age(registerRequest.getAge())
@@ -113,6 +117,4 @@ public class UserService {
         }
         return null;
     }
-
-
 }
