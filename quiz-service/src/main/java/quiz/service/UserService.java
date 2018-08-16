@@ -68,35 +68,53 @@ public class UserService {
     }
 
     public void registerUser(RegisterRequest registerRequest) {
+        if(checkUserRegistration(registerRequest)) {
+            final User u = User.builder().username(registerRequest.getUsername()).password(registerRequest.getPassword())
+                    .firstName(registerRequest.getFirstName()).lastName(registerRequest.getLastName()).age(registerRequest.getAge())
+                    .points(0).build();
+            registeredUsers.add(u);
+            final RegisterSuccessful registerSuccessful = RegisterSuccessful.builder().username(registerRequest.getUsername())
+                    .password(registerRequest.getPassword()).firstName(registerRequest.getFirstName())
+                    .lastName(registerRequest.getLastName()).age(registerRequest.getAge())
+                    .points(0).build();
+            final String topic = "/topic/regSuccess/" + registerRequest.getUsername();
+            this.logger.info("Topic: {}", topic);
+            messagingTemplate.convertAndSend(topic, registerSuccessful);
+            this.logger.info("User successfully registered!");
+
+        }
+    }
+
+    private boolean checkUserRegistration(RegisterRequest registerRequest){
         if (checkForUsername(registerRequest.getUsername())) {
             final RegisterFailed registerFailed = RegisterFailed.builder().message("User with such username already exists").build();
-            messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
-            return;
+            messagingTemplate.convertAndSend("/topic/regFailed/" + registerRequest.getUsername(), registerFailed);
+            this.logger.info("User not successfully registered! - user with such username already exists");
+            this.logger.info(registeredUsers.toString());
+            return false;
         }
         if (registerRequest.getUsername() == null || registerRequest.getUsername().isEmpty() || registerRequest.getUsername().length() < 4) {
             final RegisterFailed registerFailed = RegisterFailed.builder().message("Invalid username").build();
-            messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
-            return;
+            messagingTemplate.convertAndSend("/topic/regFailed/" + registerRequest.getUsername(), registerFailed);
+            this.logger.info("User not successfully registered! - invalid username");
+            this.logger.info(registeredUsers.toString());
+            return false;
         }
         if (registerRequest.getPassword() == null || registerRequest.getPassword().isEmpty() || registerRequest.getPassword().length() < 8) {
             final RegisterFailed registerFailed = RegisterFailed.builder().message("Invalid password").build();
-            messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
-            return;
+            messagingTemplate.convertAndSend("/topic/regFailed/" + registerRequest.getUsername(), registerFailed);
+            this.logger.info("User not successfully registered! - invalid password");
+            this.logger.info(registeredUsers.toString());
+            return false;
         }
         if (registerRequest.getAge() < 14) {
             final RegisterFailed registerFailed = RegisterFailed.builder().message("User not old enough to join the game").build();
-            messagingTemplate.convertAndSend("topic/regFailed/" + registerRequest.getUsername(), registerFailed);
-            return;
+            messagingTemplate.convertAndSend("/topic/regFailed/" + registerRequest.getUsername(), registerFailed);
+            this.logger.info("User not successfully registered! - too young");
+            this.logger.info(registeredUsers.toString());
+            return false;
         }
-        User u = User.builder().username(registerRequest.getUsername()).password(registerRequest.getPassword())
-                .firstName(registerRequest.getFirstName()).lastName(registerRequest.getLastName()).age(registerRequest.getAge())
-                .points(0).build();
-        registeredUsers.add(u);
-        final RegisterSuccessful registerSuccessful = RegisterSuccessful.builder().username(registerRequest.getUsername())
-                .password(registerRequest.getPassword()).firstName(registerRequest.getFirstName())
-                .lastName(registerRequest.getLastName()).age(registerRequest.getAge())
-                .points(0).build();
-        messagingTemplate.convertAndSend("topic/regSuccess/" + registerRequest.getUsername(), registerSuccessful);
+        return true;
     }
 
     private boolean checkForUsername(String username) {
