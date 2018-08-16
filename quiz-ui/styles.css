@@ -4,6 +4,10 @@ label {
     color: white;
 }
 
+label:first-child {
+    margin-top: 0.5em;
+}
+
 @font-face {
     font-family: SweetSensations;
     src: url(src/assets/SweetSensations.ttf);
@@ -16,6 +20,13 @@ label {
 .quiz-container {
     border: 3px solid white;
 }
+
+.reg-log-btn, label {
+    margin-bottom: 1em;
+    font-weight: bolder;
+    font-size: large;
+}
+
 .flex-container {
     display: flex;
     flex-direction: row;
@@ -33,7 +44,7 @@ label {
     border-radius: 24px;
 }
 #send-answer-btn {
-    margin: 1em;
+    margin-bottom: 1em;
     font-family: RobagaRounded;
     font-size: 1.5em;
     border-radius: 12px;
@@ -96,13 +107,13 @@ input[type=text], input[type=password] {
 }
 
 #if-new {
-    color: white;
+    color: gainsboro;
     margin-top: 2em;
 }
 
 /* Set a style for all buttons */
 button {
-    background-color: #636262;
+    background-color: gray;
     color: white;
     padding: 14px 20px;
     margin: 1em 0;
@@ -118,9 +129,6 @@ button:hover {
     opacity: 0.8;
 }
 
-.reg-btn {
-    font-weight: bolder;
-}
 
 :focus {
     outline:none !important;

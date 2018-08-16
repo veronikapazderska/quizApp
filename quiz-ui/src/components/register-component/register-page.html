@@ -1,20 +1,73 @@
-<div>
-    <div class="header">
-        <div id="welcome">Welcome to QuizApp</div>
-    </div>
-    <div id="main-container">
-        <div class="container">
-            <label for="name"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" id="name" ng-model="username"/>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" id="psw" ng-model="password"/>
-            <label for="first-name"><b>Fisrt Name</b></label>
-            <input type="text" placeholder="Enter First Name" id="first-name" ng-model="firstName"/>
-            <label for="last-name"><b>Last Name</b></label>
-            <input type="text" placeholder="Enter Last Name" id="last-name" ng-model="lastName"/>
-            <label for="age"><b>Age</b></label> <br/>
-            <input type="number" placeholder="Enter Age" id="age" ng-model="age"/>
-            <button class="reg-btn" ng-click="regCtrl.register()">Register</button>
+<div class="row">
+    <div class="col-lg-10 offset-lg-1">
+        <div class="row justify-content-lg-center">
+            <div id="welcome">Welcome To QuizApp</div>
         </div>
     </div>
+</div>
+<div class="row">
+        <div class="col-lg-4 offset-lg-4 quiz-container">
+            <div class="row justify-content-lg-center">
+                <label for="name"><b>Username</b></label>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="text" placeholder="Enter Username" id="name" ng-model="username"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-lg-center">
+                <label for="psw"><b>Password</b></label>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="password" placeholder="Enter Password" id="psw" ng-model="password"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-lg-center">
+                <label for="first-name"><b>Fisrt Name</b></label>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="text" placeholder="Enter First Name" id="first-name" ng-model="firstName"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-lg-center">
+                <label for="last-name"><b>Last Name</b></label>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="text" placeholder="Enter Last Name" id="last-name" ng-model="lastName"/>
+                </div>
+            </div>
+
+            <div class="row justify-content-lg-center">
+                <label for="age"><b>Age</b></label> <br/>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="number" placeholder="Enter Age" id="age" ng-model="age"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 offset-lg-2">
+                    <button class="reg-log-btn" ng-click="regCtrl.register()">
+                        Register
+                    </button>
+                </div>
+                <div class="col-lg-4">
+                    <button class="reg-log-btn" ng-click="regCtrl.redirectToLogin()">
+                        Login
+                    </button>
+                </div>
+            </div>
+
+        </div>
 </div>
