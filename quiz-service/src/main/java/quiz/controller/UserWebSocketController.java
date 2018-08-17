@@ -6,6 +6,7 @@ package quiz.controller;//import api.user.login.LogoutRequest;
         import api.user.ActiveUsersRequest;
         import api.user.User;
         import api.user.login.LoginRequest;
+        import api.user.logout.LogoutRequest;
         import api.user.register.RegisterRequest;
         import org.slf4j.Logger;
         import org.slf4j.LoggerFactory;
@@ -64,6 +65,11 @@ public class UserWebSocketController {
     @MessageMapping("/activeUsersRequest")
     public void activeUsersHandler(@Payload ActiveUsersRequest activeUsersRequest) {
         userService.publishActiveUsers();
+    }
+
+    @MessageMapping("/logoutRequest")
+    public void logoutHandler(@Payload LogoutRequest logoutRequest) {
+        userService.logOut(logoutRequest);
     }
 
 

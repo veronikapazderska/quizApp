@@ -6,6 +6,8 @@ import api.user.User;
 import api.user.login.LoginFailed;
 import api.user.login.LoginRequest;
 import api.user.login.LoginSuccessful;
+import api.user.logout.LogoutRequest;
+import api.user.logout.LogoutResponse;
 import api.user.register.RegisterFailed;
 import api.user.register.RegisterRequest;
 import api.user.register.RegisterSuccessful;
@@ -34,21 +36,24 @@ public class UserService {
     @PostConstruct
     public void init() {
         this.registeredUsers.add(User.builder()
-                .username("veronika").password("veronika")
+                .username("veronika")
+                .password("veronika")
                 .firstName("Veronika")
                 .lastName("Pazderska")
                 .age(22)
                 .isActive(false)
                 .points(150).build());
         this.registeredUsers.add(User.builder()
-                .username("iliyan").password("iliyan")
+                .username("iliyan")
+                .password("iliyan")
                 .firstName("Iliyan")
                 .lastName("Bachiyski")
                 .age(23)
                 .isActive(false)
                 .points(100).build());
         this.registeredUsers.add(User.builder()
-                .username("stanka").password("stanka")
+                .username("stanka")
+                .password("stanka")
                 .firstName("Stanislava")
                 .lastName("Zhelyazkova")
                 .age(23)
@@ -62,7 +67,7 @@ public class UserService {
         if (checkForUsername(loginRequest.getUsername())) {
             User u = findUserByUsername(loginRequest.getUsername());
 
-                if (u.getPassword().equals(loginRequest.getPassword())) {
+                if (u.getPassword().equals(loginRequest.getPassword()) && !this.checkForActiveUser(loginRequest.getUsername())) {
                     final LoginSuccessful loginSuccessful = LoginSuccessful.builder().username(u.getUsername())
                             .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints())
                             .isActive(true).build();
@@ -74,7 +79,7 @@ public class UserService {
                 }
         }
 
-        final LoginFailed loginFailed = LoginFailed.builder().message("Invalid Credentials!").build();
+        final LoginFailed loginFailed = LoginFailed.builder().message("Invalid Login!").build();
         this.logger.info(loginFailed.toString());
         messagingTemplate.convertAndSend("/topic/logFailed/" + loginRequest.getUsername(), loginFailed);
 
@@ -102,6 +107,16 @@ public class UserService {
 
     public void publishActiveUsers(){
         messagingTemplate.convertAndSend("/topic/activeUsers", activeUsers);
+    }
+
+    public void logOut(LogoutRequest logoutRequest){
+        ActiveUser activeUser = findActiveUserByUsername(logoutRequest.getUsername());
+        this.activeUsers.activeUsers.remove(activeUser);
+        publishActiveUsers();
+        final LogoutResponse logoutResponse = LogoutResponse.builder().message("User has logged out").build();
+        messagingTemplate.convertAndSend("/topic/logOut/" + logoutRequest.getUsername(), logoutResponse);
+        this.logger.info(logoutResponse.message);
+
     }
 
     private boolean checkUserRegistration(RegisterRequest registerRequest){
@@ -153,4 +168,22 @@ public class UserService {
         }
         return null;
     }
+    private ActiveUser findActiveUserByUsername(String username) {
+        for (ActiveUser u : activeUsers.activeUsers) {
+            if (u.getUsername().equals(username)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
+    private boolean checkForActiveUser(String username) {
+        for(ActiveUser u : activeUsers.activeUsers) {
+            if(u.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
