@@ -57,12 +57,11 @@ public class UserService {
                 .build());
     }
 
-
     public void checkLogin(LoginRequest loginRequest) {
 
         if (checkForUsername(loginRequest.getUsername())) {
             User u = findUserByUsername(loginRequest.getUsername());
-            //if (u != null) {
+
                 if (u.getPassword().equals(loginRequest.getPassword())) {
                     final LoginSuccessful loginSuccessful = LoginSuccessful.builder().username(u.getUsername())
                             .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints())
@@ -70,15 +69,15 @@ public class UserService {
                     this.activeUsers.activeUsers.add(ActiveUser.builder().username(u.getUsername())
                     .firstName(u.getFirstName()).lastName(u.getLastName()).age(u.getAge()).points(u.getPoints()).build());
                     messagingTemplate.convertAndSend("/topic/logSuccess/" + loginRequest.getUsername(), loginSuccessful);
+                    publishActiveUsers();
                     return;
                 }
-
         }
 
         final LoginFailed loginFailed = LoginFailed.builder().message("Invalid Credentials!").build();
         this.logger.info(loginFailed.toString());
         messagingTemplate.convertAndSend("/topic/logFailed/" + loginRequest.getUsername(), loginFailed);
-       // }
+
     }
 
     public void registerUser(RegisterRequest registerRequest) {
@@ -91,12 +90,18 @@ public class UserService {
                     .password(registerRequest.getPassword()).firstName(registerRequest.getFirstName())
                     .lastName(registerRequest.getLastName()).age(registerRequest.getAge())
                     .points(0).isActive(true).build();
+            this.activeUsers.activeUsers.add(ActiveUser.builder().username(u.getUsername())
+                    .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints()).age(u.getAge()).build());
             final String topic = "/topic/regSuccess/" + registerRequest.getUsername();
             this.logger.info("Topic: {}", topic);
             messagingTemplate.convertAndSend(topic, registerSuccessful);
             this.logger.info("User successfully registered!");
 
         }
+    }
+
+    public void publishActiveUsers(){
+        messagingTemplate.convertAndSend("/topic/activeUsers", activeUsers);
     }
 
     private boolean checkUserRegistration(RegisterRequest registerRequest){

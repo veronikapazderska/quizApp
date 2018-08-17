@@ -6,6 +6,6 @@ import lombok.*;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ToString
-public class LoginRequest {
+public class LogoutRequest {
     public final String username;
 }

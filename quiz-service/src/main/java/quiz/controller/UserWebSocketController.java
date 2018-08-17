@@ -1,8 +1,9 @@
-package quiz.controller;//import api.user.login.LoginRequest;
+package quiz.controller;//import api.user.login.LogoutRequest;
         //import api.user.logout.LogoutRequest;
        // import api.user.register.RegisterRequest;
        // import communication.service.websocket.UserService;
 
+        import api.user.ActiveUsersRequest;
         import api.user.User;
         import api.user.login.LoginRequest;
         import api.user.register.RegisterRequest;
@@ -41,7 +42,7 @@ public class UserWebSocketController {
     }
 
     @MessageMapping("/user/logIn")
-    public void userLoginHandler(@Payload LoginRequest request) {
+    public void userLoginHandler(@Payload LogoutRequest request) {
         this.userService.logIn(request);
     }
 
@@ -59,4 +60,11 @@ public class UserWebSocketController {
     public void userRegisterHandler(@Payload RegisterRequest registerRequest) {
         userService.registerUser(registerRequest);
     }
+
+    @MessageMapping("/activeUsersRequest")
+    public void activeUsersHandler(@Payload ActiveUsersRequest activeUsersRequest) {
+        userService.publishActiveUsers();
+    }
+
+
 }

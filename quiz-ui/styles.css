@@ -3,8 +3,12 @@ label {
 }
 
 .card:hover {
-    opacity: 0.8;
+    opacity: 0.7;
     cursor: pointer;
+}
+.user-card {
+    background-color: white;
+    opacity: 0.9;
 }
 
 label:first-child {

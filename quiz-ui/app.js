@@ -20,5 +20,10 @@ app.config(function($routeProvider) {
             templateUrl: 'src/components/main-page-component/main-page.html',
             controller: 'mainPageController',
             controllerAs: 'mainCtrl'
+        })
+        .when('/activeUsers', {
+            templateUrl: 'src/components/active-users-component/active-users.html',
+            controller: 'activeUsersController',
+            controllerAs: 'activeCtrl'
         });
 });
