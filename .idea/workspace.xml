@@ -2,16 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09211beb-6171-40c8-9cf1-4ede32707b51" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUsers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.component.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/UserWebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/UserWebSocketController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-service/target/classes/quiz/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-service/target/classes/quiz/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.component.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-ui/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginSuccessful.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginSuccessful.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterSuccessful.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterSuccessful.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/User$UserBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/login/LoginSuccessful$LoginSuccessfulBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/login/LoginSuccessful$LoginSuccessfulBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/login/LoginSuccessful.class" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/login/LoginSuccessful.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/register/RegisterRequest$RegisterRequestBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/register/RegisterRequest$RegisterRequestBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/register/RegisterRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-websocket-api/target/classes/api/user/register/RegisterRequest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,62 +42,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/UserService.java">
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/quiz-ui/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="70" column="120" selection-start-line="70" selection-start-column="120" selection-end-line="70" selection-end-column="120" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActiveUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUser.java">
+      <file leaf-file-name="main-page.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActiveUsers.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUsers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginSuccessful.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginSuccessful.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" selection-start-line="4" selection-end-line="7" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegisterSuccessful.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterSuccessful.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state relative-caret-position="204">
+              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -97,9 +65,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="Class" />
       </list>
     </option>
   </component>
@@ -158,32 +126,34 @@
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisteredUsers.java" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginRequest.java" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginFailed.java" />
-        <option value="$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/UserWebSocketController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/pom.xml" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterFailed.java" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterSuccess.java" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/logout/LoginRequest.java" />
         <option value="$PROJECT_DIR$/quiz-ui/src/components/quiz-component/quiz-page.html" />
-        <option value="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.html" />
         <option value="$PROJECT_DIR$/quiz-ui/app.js" />
         <option value="$PROJECT_DIR$/quiz-ui/src/components/quiz-component/quiz-page.component.js" />
-        <option value="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.component.js" />
         <option value="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page-component.js" />
         <option value="$PROJECT_DIR$/quiz-ui/index.html" />
         <option value="$PROJECT_DIR$/quiz-ui/src/services/stomp-client.service.js" />
-        <option value="$PROJECT_DIR$/quiz-ui/styles.css" />
-        <option value="$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.html" />
-        <option value="$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.component.js" />
-        <option value="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.html" />
-        <option value="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.component.js" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUser.java" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/User.java" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterRequest.java" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterSuccessful.java" />
-        <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginSuccessful.java" />
         <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUsers.java" />
+        <option value="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginSuccessful.java" />
+        <option value="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.component.js" />
+        <option value="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.component.js" />
+        <option value="$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/UserWebSocketController.java" />
+        <option value="$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.component.js" />
         <option value="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/UserService.java" />
+        <option value="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.html" />
+        <option value="$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.html" />
+        <option value="$PROJECT_DIR$/quiz-ui/styles.css" />
+        <option value="$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.html" />
+        <option value="$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.html" />
+        <option value="$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.component.js" />
       </list>
     </option>
   </component>
@@ -213,10 +183,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1937" />
-    <option name="height" value="1057" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1938" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -224,8 +194,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,7 +245,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="quiz" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quizapp" type="b2602c69:ProjectViewProjectNode" />
@@ -292,53 +261,31 @@
             <path>
               <item name="quizapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="quizapp" type="462c0819:PsiDirectoryNode" />
-              <item name="quiz-websocket-api" type="462c0819:PsiDirectoryNode" />
+              <item name="quiz-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quizapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="quizapp" type="462c0819:PsiDirectoryNode" />
-              <item name="quiz-websocket-api" type="462c0819:PsiDirectoryNode" />
+              <item name="quiz-ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="active-users-component" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="quizapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="quizapp" type="462c0819:PsiDirectoryNode" />
-              <item name="quiz-websocket-api" type="462c0819:PsiDirectoryNode" />
+              <item name="quiz-ui" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quizapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quizapp" type="462c0819:PsiDirectoryNode" />
-              <item name="quiz-websocket-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quizapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quizapp" type="462c0819:PsiDirectoryNode" />
-              <item name="quiz-websocket-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="quizapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="quizapp" type="462c0819:PsiDirectoryNode" />
-              <item name="quiz-websocket-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -444,7 +391,9 @@
       <workItem from="1534310183234" duration="19410000" />
       <workItem from="1534334179239" duration="7590000" />
       <workItem from="1534396722313" duration="26497000" />
-      <workItem from="1534431445229" duration="8041000" />
+      <workItem from="1534431445229" duration="8145000" />
+      <workItem from="1534441093144" duration="205000" />
+      <workItem from="1534484374306" duration="11460000" />
     </task>
     <task id="LOCAL-00001" summary="Change styles for the login and register page">
       <created>1534342019069</created>
@@ -509,19 +458,25 @@
       <option name="project" value="LOCAL" />
       <updated>1534436666304</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add ActiveUser and ActiveUsers classes">
+      <created>1534439650728</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1534439650728</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89554000" />
+    <option name="totallyTimeSpent" value="101323000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="8" visible="true" weight="0.10067114" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.10021322" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -529,18 +484,18 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3874459" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.72402596" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="8" weight="0.32900432" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="8" weight="0.32900432" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.17514125" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.49435028" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.530303" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.17640692" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.512987" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21946308" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2249467" />
       <window_info anchor="right" id="Bean Validation" order="9" />
       <window_info id="Web" order="3" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="7" />
@@ -555,36 +510,36 @@
     <layout-to-restore>
       <window_info id="Designer" order="2" />
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32575756" />
       <window_info anchor="bottom" id="Spring" order="11" />
       <window_info id="Image Layers" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.25541127" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.512987" />
       <window_info id="Capture Tool" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32900432" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.32900432" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" visible="true" weight="0.13636364" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2196162" />
-      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.53107345" />
+      <window_info anchor="right" id="Maven Projects" order="8" visible="true" weight="0.10021322" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2249467" />
+      <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3874459" />
       <window_info anchor="right" id="Bean Validation" order="9" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.30194804" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,34 +584,15 @@
     <MESSAGE value="Create main page and controller" />
     <MESSAGE value="register functionality" />
     <MESSAGE value="fix registration error message" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix registration error message" />
+    <MESSAGE value="add ActiveUser and ActiveUsers classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ActiveUser and ActiveUsers classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/quiz-app/src/main/java/quiz/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="113" selection-start-line="15" selection-start-column="113" selection-end-line="15" selection-end-column="113" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/ApplicationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -705,9 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="24" column="52" lean-forward="true" selection-start-line="24" selection-start-column="52" selection-end-line="24" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -813,27 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginFailed.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="47" column="14" lean-forward="true" selection-start-line="47" selection-start-column="14" selection-end-line="47" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/quiz-component/quiz-page.component.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -862,49 +774,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/ApplicationService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="80" selection-start-line="14" selection-start-column="43" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="274" column="64" lean-forward="true" selection-start-line="274" selection-start-column="64" selection-end-line="274" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/WebSocketEventListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/UserWebSocketController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="5" lean-forward="true" selection-start-line="54" selection-start-column="5" selection-end-line="54" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1864#1865#0" expanded="true" />
-            <element signature="e#1916#1917#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -922,45 +795,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-ui/app.js">
+    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="43" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="43" />
+        <state relative-caret-position="221">
+          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-ui/styles.css">
+    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUsers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="154" column="1" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
+        <state relative-caret-position="221">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.html">
+    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="20" column="97" selection-start-line="20" selection-start-column="97" selection-end-line="20" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.component.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -968,13 +823,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/register/RegisterRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="25" lean-forward="true" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -987,35 +835,126 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginSuccessful.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.component.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="7" selection-end-column="9" />
+          <caret line="4" column="53" lean-forward="true" selection-start-line="4" selection-end-line="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUser.java">
+    <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/ApplicationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/ActiveUsers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        <state relative-caret-position="272">
+          <caret line="16" column="80" selection-start-line="14" selection-start-column="43" selection-end-line="17" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/WebSocketEventListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="70" column="120" selection-start-line="70" selection-start-column="120" selection-end-line="70" selection-end-column="120" />
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/UserWebSocketController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="33" column="60" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="60" />
+          <folding>
+            <element signature="e#1864#1865#0" expanded="true" />
+            <element signature="e#1924#1925#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="142" lean-forward="true" selection-start-line="1" selection-start-column="142" selection-end-line="1" selection-end-column="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/user/login/LoginFailed.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/register-component/register-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.component.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-ui/src/components/main-page-component/main-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
         </state>
       </provider>
     </entry>

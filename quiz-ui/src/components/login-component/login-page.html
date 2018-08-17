@@ -27,6 +27,12 @@
             </div>
         </div>
 
+
+        <div class="alert alert-danger col-lg-10 offset-lg-1" role="alert" ng-show="loginCtrl.errorMessage">
+            {{loginCtrl.errorMessage}}!
+        </div>
+
+
         <div class="row justify-content-lg-center">
             <div class="col-lg-6">
                 <button class="reg-log-btn" ng-click="loginCtrl.login()">

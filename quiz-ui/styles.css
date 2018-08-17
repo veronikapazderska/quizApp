@@ -1,7 +1,10 @@
-/* Bordered form */
-
 label {
     color: white;
+}
+
+.card:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 label:first-child {
@@ -50,12 +53,17 @@ label:first-child {
     border-radius: 12px;
 }
 
+.hello-title {
+    color: white;
+    margin-bottom: 1em;
+    font-family: RobagaRounded;
+}
+
 h3{
     color: white;
     text-align: center;
 }
 
-/* Full-width inputs */
 * {box-sizing: border-box;}
 
 body {
@@ -111,7 +119,6 @@ input[type=text], input[type=password] {
     margin-top: 2em;
 }
 
-/* Set a style for all buttons */
 button {
     background-color: gray;
     color: white;
@@ -150,10 +157,6 @@ button:hover {
     padding: 0px 16px 5px 16px;
 }
 
-.error-msg {
-    color: yellow;
-}
-
 #age {
     width: 100%;
     height: 3em;
@@ -173,7 +176,6 @@ button:hover {
      margin-top: 1em;
  }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
         display: block;

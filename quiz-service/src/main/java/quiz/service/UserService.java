@@ -62,20 +62,23 @@ public class UserService {
 
         if (checkForUsername(loginRequest.getUsername())) {
             User u = findUserByUsername(loginRequest.getUsername());
-            if (u != null) {
+            //if (u != null) {
                 if (u.getPassword().equals(loginRequest.getPassword())) {
-                    final LoginSuccessful loginSuccessful = LoginSuccessful.builder()
+                    final LoginSuccessful loginSuccessful = LoginSuccessful.builder().username(u.getUsername())
                             .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints())
                             .isActive(true).build();
                     this.activeUsers.activeUsers.add(ActiveUser.builder().username(u.getUsername())
                     .firstName(u.getFirstName()).lastName(u.getLastName()).age(u.getAge()).points(u.getPoints()).build());
                     messagingTemplate.convertAndSend("/topic/logSuccess/" + loginRequest.getUsername(), loginSuccessful);
-                } else {
-                    final LoginFailed loginFailed = LoginFailed.builder().message("Invalid Credentials!").build();
-                    messagingTemplate.convertAndSend("topic/logFailed/" + loginRequest.getUsername(), loginFailed);
+                    return;
                 }
-            }
+
         }
+
+        final LoginFailed loginFailed = LoginFailed.builder().message("Invalid Credentials!").build();
+        this.logger.info(loginFailed.toString());
+        messagingTemplate.convertAndSend("/topic/logFailed/" + loginRequest.getUsername(), loginFailed);
+       // }
     }
 
     public void registerUser(RegisterRequest registerRequest) {

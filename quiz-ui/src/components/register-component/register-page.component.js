@@ -13,21 +13,23 @@ app.controller('registerController', ['$scope', '$rootScope', '$location', 'stom
 
         self.registrationSucceeded();
         self.registrationFailed();
+
         stompService.publish('/app/registerRequest', user);
+    };
+
+
+    self.registrationSucceeded = function () {
+        stompService.subscribe("/topic/regSuccess/" + $scope.username, function (registerSuccessful) {
+            $rootScope.loggedUser = registerSuccessful;
+            $location.path('/main');
+            $scope.$apply();
+        });
     };
 
     self.registrationFailed = function() {
         console.log("Metoda se vika");
         stompService.subscribe("/topic/regFailed/" + $scope.username, function (registerFailed) {
             self.errorMessage = registerFailed.message;
-            $scope.$apply();
-        });
-    };
-
-    self.registrationSucceeded = function () {
-        stompService.subscribe("/topic/regSuccess/" + $scope.username, function (registerSuccessful) {
-            $rootScope.registeredUser = registerSuccessful;
-            $location.path('/main');
             $scope.$apply();
         });
     };
