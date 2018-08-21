@@ -14,4 +14,5 @@ public class User {
     public int age;
     public int points;
     public boolean isActive;
+    public boolean isBusy;
 }

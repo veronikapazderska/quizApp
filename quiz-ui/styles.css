@@ -1,3 +1,19 @@
+.blur{
+    opacity: 0.1;
+}
+
+#first{
+    z-index:1;
+}
+#invitation{
+    position: absolute;
+    z-index: 2;
+    top: 12em;
+    left: 23em;
+}
+#second:hover{
+    opacity: 1;
+}
 label {
     color: white;
 }

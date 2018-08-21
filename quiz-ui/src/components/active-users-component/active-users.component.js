@@ -30,6 +30,7 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
         var gameRequest = {};
         gameRequest.sender = $rootScope.loggedUser.username;
         gameRequest.receiver = username;
+        console.log("Sender is " + gameRequest.sender + " and receiver is " + gameRequest.receiver);
 
         stompService.subscribe('/topic/gameResponse/' + gameRequest.sender, function(gameResponse){
             if(gameResponse.hasConfirmed){

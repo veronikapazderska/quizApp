@@ -14,4 +14,5 @@ public class RegisterRequest {
     public final int age;
     public final int points;
     public final boolean isActive;
+    public final boolean isBusy;
 }

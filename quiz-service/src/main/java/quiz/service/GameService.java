@@ -20,6 +20,7 @@ public class GameService {
     private UserService userService;
 
     public void handleGameRequest(GameRequest gameRequest){
+        logger.info("Sender is " + gameRequest.getSender() + " and receiver is " + gameRequest.getReceiver());
         messagingTemplate.convertAndSend("/topic/gameRequest/" + gameRequest.getReceiver(), gameRequest);
     }
 
