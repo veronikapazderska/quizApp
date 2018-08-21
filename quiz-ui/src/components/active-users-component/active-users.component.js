@@ -10,6 +10,10 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
 
     stompService.publish('/app/activeUsersRequest', {});
 
+    self.redirectToQuiz = function() {
+        $location.path('/takeQuiz');
+    };
+
     self.logOut = function () {
         stompService.subscribe("/topic/logOut/" + $rootScope.loggedUser.username, function (logoutResponse) {
             console.log("Local Storage");
@@ -21,5 +25,23 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
 
         stompService.publish("/app/logoutRequest", {username: $rootScope.loggedUser.username});
     };
+
+    self.inviteUser = function(username) {
+        var gameRequest = {};
+        gameRequest.sender = $rootScope.loggedUser.username;
+        gameRequest.receiver = username;
+
+        stompService.subscribe('/topic/gameResponse/' + gameRequest.sender, function(gameResponse){
+            if(gameResponse.hasConfirmed){
+                //TODO: navigate to quiz page
+            }
+            else {
+                //TODO: handle negative answer - pop-up or sth else
+            }
+        });
+
+        stompService.publish("/app/gameRequest", gameRequest);
+    };
+    
 
 }]);

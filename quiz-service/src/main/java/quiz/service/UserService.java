@@ -1,5 +1,6 @@
 package quiz.service;
 
+import api.question.Question2;
 import api.user.ActiveUser;
 import api.user.ActiveUsers;
 import api.user.User;
@@ -31,6 +32,8 @@ public class UserService {
 
     private List<User> registeredUsers = new ArrayList<>();
 
+    //private List<Question2> questions = new ArrayList<>();
+
     private ActiveUsers activeUsers = ActiveUsers.builder().activeUsers(new ArrayList<>()).build();
 
     @PostConstruct
@@ -60,23 +63,25 @@ public class UserService {
                 .points(120)
                 .isActive(false)
                 .build());
+
     }
+
 
     public void checkLogin(LoginRequest loginRequest) {
 
         if (checkForUsername(loginRequest.getUsername())) {
             User u = findUserByUsername(loginRequest.getUsername());
 
-                if (u.getPassword().equals(loginRequest.getPassword()) && !this.checkForActiveUser(loginRequest.getUsername())) {
-                    final LoginSuccessful loginSuccessful = LoginSuccessful.builder().username(u.getUsername())
-                            .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints())
-                            .isActive(true).build();
-                    this.activeUsers.activeUsers.add(ActiveUser.builder().username(u.getUsername())
-                    .firstName(u.getFirstName()).lastName(u.getLastName()).age(u.getAge()).points(u.getPoints()).build());
-                    messagingTemplate.convertAndSend("/topic/logSuccess/" + loginRequest.getUsername(), loginSuccessful);
-                    publishActiveUsers();
-                    return;
-                }
+            if (u.getPassword().equals(loginRequest.getPassword()) && !this.checkForActiveUser(loginRequest.getUsername())) {
+                final LoginSuccessful loginSuccessful = LoginSuccessful.builder().username(u.getUsername())
+                        .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints())
+                        .isActive(true).build();
+                this.activeUsers.activeUsers.add(ActiveUser.builder().username(u.getUsername())
+                        .firstName(u.getFirstName()).lastName(u.getLastName()).age(u.getAge()).points(u.getPoints()).build());
+                messagingTemplate.convertAndSend("/topic/logSuccess/" + loginRequest.getUsername(), loginSuccessful);
+                publishActiveUsers();
+                return;
+            }
         }
 
         final LoginFailed loginFailed = LoginFailed.builder().message("Invalid Login!").build();
@@ -86,7 +91,7 @@ public class UserService {
     }
 
     public void registerUser(RegisterRequest registerRequest) {
-        if(checkUserRegistration(registerRequest)) {
+        if (checkUserRegistration(registerRequest)) {
             final User u = User.builder().username(registerRequest.getUsername()).password(registerRequest.getPassword())
                     .firstName(registerRequest.getFirstName()).lastName(registerRequest.getLastName()).age(registerRequest.getAge())
                     .points(0).isActive(true).build();
@@ -105,11 +110,11 @@ public class UserService {
         }
     }
 
-    public void publishActiveUsers(){
+    public void publishActiveUsers() {
         messagingTemplate.convertAndSend("/topic/activeUsers", activeUsers);
     }
 
-    public void logOut(LogoutRequest logoutRequest){
+    public void logOut(LogoutRequest logoutRequest) {
         ActiveUser activeUser = findActiveUserByUsername(logoutRequest.getUsername());
         this.activeUsers.activeUsers.remove(activeUser);
         publishActiveUsers();
@@ -119,7 +124,7 @@ public class UserService {
 
     }
 
-    private boolean checkUserRegistration(RegisterRequest registerRequest){
+    private boolean checkUserRegistration(RegisterRequest registerRequest) {
         if (checkForUsername(registerRequest.getUsername())) {
             final RegisterFailed registerFailed = RegisterFailed.builder().message("User with such username already exists").build();
             messagingTemplate.convertAndSend("/topic/regFailed/" + registerRequest.getUsername(), registerFailed);
@@ -168,6 +173,7 @@ public class UserService {
         }
         return null;
     }
+
     private ActiveUser findActiveUserByUsername(String username) {
         for (ActiveUser u : activeUsers.activeUsers) {
             if (u.getUsername().equals(username)) {
@@ -178,8 +184,8 @@ public class UserService {
     }
 
     private boolean checkForActiveUser(String username) {
-        for(ActiveUser u : activeUsers.activeUsers) {
-            if(u.getUsername().equals(username)){
+        for (ActiveUser u : activeUsers.activeUsers) {
+            if (u.getUsername().equals(username)) {
                 return true;
             }
         }

@@ -13,8 +13,9 @@
     <div class="card col-lg-5" ng-if="loggedUser.username!=user.username">
         <div class="card-body">
             <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
-            <p class="card-text">Age: {{user.age}} <br/> Points: {{user.points}}</p>
-            <a href="#" class="btn btn-dark">Invite to Game</a>
+            <p class="card-text">Age: {{user.age}}
+                <br/> Points: {{user.points}}</p>
+            <a href="#" class="btn btn-dark" ng-click="activeCtrl.inviteUser(user.username)">Invite to Game</a>
         </div>
         <div class="w-100 d-none d-lg-block"></div>
     </div>

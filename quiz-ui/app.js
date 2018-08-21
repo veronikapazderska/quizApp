@@ -1,4 +1,4 @@
-var app = angular.module("app", ["ngRoute"]);
+var app = angular.module("app", ["ngRoute",'ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 app.config(function($routeProvider) {
     $routeProvider
         .when("/takeQuiz", {
@@ -21,9 +21,19 @@ app.config(function($routeProvider) {
             controller: 'mainPageController',
             controllerAs: 'mainCtrl'
         })
+        .when('/quizz', {
+            templateUrl : 'src/components/questions-component/question-page.html',
+            controller: 'questionsController',
+            controllerAs: 'questionCtrl'
+        })
         .when('/activeUsers', {
             templateUrl: 'src/components/active-users-component/active-users.html',
             controller: 'activeUsersController',
             controllerAs: 'activeCtrl'
+        })
+        .otherwise({
+            template : "<h1 style='color: white'>None</h1><p style='color: white'>Nothing has been selected</p>"
         });
+
+
 });

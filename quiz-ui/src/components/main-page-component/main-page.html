@@ -10,7 +10,7 @@
 </div>
 
 <div class="row justify-content-lg-center hello-title">
-   <h1>Hello, {{mainCtrl.firstName}} {{mainCtrl.lastName}} </h1>
+    <h1>Hello, {{mainCtrl.firstName}} {{mainCtrl.lastName}} </h1>
 </div>
 
 <div class="row"></div>
@@ -18,11 +18,12 @@
 <div class="row justify-content-lg-center">
     <div class="col-lg-8">
         <div class="card-group row justify-content-lg-center">
-            <div class="card col-lg-4 rounded">
+            <div class="card col-lg-4 rounded" ng-click="mainCtrl.redirectToQuiz()">
                 <img class="card-img-top" src="src/assets/start.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Start a New Game</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content
+                        is a little bit.</p>
                 </div>
             </div>
             <div class="col-lg-1"></div>
@@ -46,4 +47,9 @@
 
     </div>
 
+</div>
+
+
+<div ng-controller="ModalDemoCtrl as modalCtrl" class="modal-demo">
+    <button class="btn btn-primary" ng-click="modalCtrl.open('lg')">Open the modal</button>
 </div>
