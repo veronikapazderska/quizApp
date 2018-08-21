@@ -21,6 +21,7 @@ app.controller('registerController', ['$scope', '$rootScope', '$location', 'stom
     self.registrationSucceeded = function () {
         stompService.subscribe("/topic/regSuccess/" + $scope.username, function (registerSuccessful) {
             $rootScope.loggedUser = registerSuccessful;
+            localStorage.setItem("user", JSON.stringify(registerSuccessful))
             $location.path('/main');
             $scope.$apply();
         });
