@@ -1,5 +1,6 @@
 package quiz.controller;
 
+import api.game.GameInvitationResponse;
 import api.game.GameRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,5 +21,10 @@ public class GameWebSocketController {
     @MessageMapping("/gameRequest")
     public void gameRequestHandler(@Payload GameRequest gameRequest){
         gameService.handleGameRequest(gameRequest);
+    }
+
+    @MessageMapping("/gameResponse")
+    public void gameResponseHandler(@Payload GameInvitationResponse gameInvitationResponse){
+        gameService.handleGameResponse(gameInvitationResponse);
     }
 }

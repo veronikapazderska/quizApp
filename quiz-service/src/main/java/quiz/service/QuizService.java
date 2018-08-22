@@ -130,13 +130,6 @@ public class QuizService {
 
 
     public void generateQuestions() {
-       /* Random random = new Random();
-        int numberOfElements = 3;
-        for (int i = 0; i < numberOfElements; i++) {
-            int randomIndex = random.nextInt(questions.size());
-            Question2 randomElement = questions.get(randomIndex);
-            questionsToSend.add(randomElement);
-        }*/
 
         if (questions != null && !questions.isEmpty()) {
 

@@ -2,41 +2,57 @@ var app = angular.module("app");
 app.controller('mainPageController', ['$scope', '$rootScope', '$location', '$uibModal', 'stompService',
     function ($scope, $rootScope, $location, $uibModal, stompService, $uibModalInstance, data) {
         var self = this;
-        self.isInvited = false;
+        $rootScope.isInvited = false;
         self.sender;
-        self.username = $rootScope.loggedUser.username;
-        self.firstName = $rootScope.loggedUser.firstName;
-        self.lastName = $rootScope.loggedUser.lastName;
+        self.username = null;
+        self.firstName = null;
+        self.lastName = null;
+        self.gameRequest = null;
 
         if (localStorage.getItem('user')) {
             $rootScope.loggedUser = JSON.parse(localStorage.getItem('user'));
+            self.username = $rootScope.loggedUser.username;
+            self.firstName = $rootScope.loggedUser.firstName;
+            self.lastName = $rootScope.loggedUser.lastName;
             stompService.subscribe('/topic/gameRequest/' + $rootScope.loggedUser.username, function (gameRequest) {
+                if(gameRequest.body) {
+                    gameRequest = JSON.parse(gameRequest.body);
+                }              
                 self.sender = gameRequest.sender;
                 console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
                 if (gameRequest.receiver == $rootScope.loggedUser.username) {
-                    self.isInvited = true;
+                    self.gameRequest = gameRequest;
+                    $rootScope.isInvited = true;
                     $scope.$apply();
-                }                
+                }
+               if(gameRequest.sender == $rootScope.loggedUser.username){
+                    $rootScope.hasDeclined = true;
+                } 
             });
         }
         else {
             $location.path('/');
         }
 
-        self.accept = function(){
-            //TODO: send positive response
-            $location.path('/takeQuiz');
-        }
-
-        self.decline = function(){
-            //TODO: send negative response
-            self.isInvited = false;
-        };
-
         self.redirectToActiveUsers = function () {
             $location.path('/activeUsers');
         };
+
         self.redirectToQuiz = function () {
             $location.path('/quizz');
         };
+
+        
+    self.logOut = function () {
+        stompService.subscribe("/topic/logOut/" + $rootScope.loggedUser.username, function (logoutResponse) {
+            console.log("Local Storage");
+            console.log(logoutResponse);
+            localStorage.setItem("user", "");
+            $location.path('/');
+            $scope.$apply();
+        });
+
+        stompService.publish("/app/logoutRequest", {username: $rootScope.loggedUser.username});
+    };
+
     }]);

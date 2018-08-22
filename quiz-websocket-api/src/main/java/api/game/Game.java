@@ -8,7 +8,4 @@ import java.util.List;
 public class Game {
     private List<User> users;
     private List<Question> questions;
-
-
-
 }

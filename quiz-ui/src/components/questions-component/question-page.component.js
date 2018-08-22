@@ -15,7 +15,7 @@ app.controller('questionsController', ['$scope', '$rootScope', '$location', 'sto
             self.questions = sendQuestionsSuccess.questions;
             $scope.$apply();
             console.log('Questions: ', self.questions);
-            console.log('Question from server: ',  sendQuestionsSuccess.questions);
+            console.log('Question from server: ', sendQuestionsSuccess.questions);
         });
     };
     self.questionsReceiveFailed = function () {

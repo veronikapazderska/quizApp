@@ -1,4 +1,4 @@
-<div ng-class="{'blur':mainCtrl.isInvited}">
+<div ng-class="{'blur':isInvited}">
 <div class="row">
     <div class="col-lg-8 offset-lg-2">
         <div class="row justify-content-lg-center">
@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="col-lg-2">
-        <button class="log-out-btn">Log Out</button>
+        <button class="log-out-btn" ng-click="mainCtrl.logOut()">Log Out</button>
     </div>
 </div>
 
@@ -29,7 +29,7 @@
             </div> 
             <div class="col-lg-1"></div> -->
             <div class="card col-lg-4 rounded" ng-click="mainCtrl.redirectToActiveUsers()">
-                <img class="card-img-top" src="src/assets/users.png" alt="Card image cap">
+                <img class="card-img-top" src="src/assets/pictures/users.png" alt="Active users">
                 <div class="card-body">
                     <h5 class="card-title">Active users</h5>
                     <p class="card-text">This is a list of all active users which you can invite to start a game.</p>
@@ -37,7 +37,7 @@
             </div>
             <div class="col-lg-1"></div>
             <div class="card col-lg-4 rounded">
-                <img class="card-img-top" src="src/assets/questions.jpg" alt="Card image cap">
+                <img class="card-img-top" src="src/assets/pictures/questions.jpg" alt="Add a new question">
                 <div class="card-body">
                     <h5 class="card-title">Add a New Question</h5>
                     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
@@ -47,11 +47,5 @@
     </div>
 </div>
 </div>
-
-<div class="jumbotron" id="invitation" ng-show="mainCtrl.isInvited">
-    <div class="container">
-        <h1 class="display-4">You have been invited to start a game by {{mainCtrl.sender}}</h1>
-        <button class="btn btn-primary btn-lg" ng-click="mainCtrl.accept()">Accept</button>
-        <button class="btn btn-danger btn-lg" ng-click="mainCtrl.decline()">Decline</button>        
-    </div>
-</div>
+<invitation ng-if="isInvited" data="mainCtrl.gameRequest"></invitation>
+<decline ng-if="hasDeclined"></decline>

@@ -20,3 +20,5 @@
         <div class="w-100 d-none d-lg-block"></div>
     </div>
 </div>
+<invitation ng-if="isInvited" data="mainCtrl.gameRequest"></invitation>
+<decline ng-if="hasDeclined" data="mainCtrl.gameRequest"></decline>

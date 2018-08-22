@@ -6,7 +6,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @ToString
-public class GameResponse {
+public class GameInvitationResponse {
     public boolean hasConfirmed;
     public String sender;
     public String receiver;

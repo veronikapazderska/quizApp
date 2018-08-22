@@ -19,7 +19,6 @@ public class QuizWebSocketController {
     @MessageMapping("/getQuestionsRequest")
     public void getQuestionsHandler(@Payload QuestionsRequest questionsRequest){
         quizService.generateQuestions();
-
     }
 
 }

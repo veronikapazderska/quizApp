@@ -4,9 +4,5 @@ app.controller('quizController', ['$scope', '$location', 'stompService', functio
     self.logOut = function () {
        $location.path('/');
     };
-    stompService.subscribe("/topic/test", function (message) {
-        console.log(message);
-    });
-
 }
 ]);

@@ -35,6 +35,8 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
         stompService.subscribe('/topic/gameResponse/' + gameRequest.sender, function(gameResponse){
             if(gameResponse.hasConfirmed){
                 //TODO: navigate to quiz page
+                $location.path('/takeQuiz');
+                $scope.$apply();
             }
             else {
                 //TODO: handle negative answer - pop-up or sth else

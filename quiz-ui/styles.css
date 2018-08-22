@@ -5,7 +5,7 @@
 #first{
     z-index:1;
 }
-#invitation{
+#invitation, #decline{
     position: absolute;
     z-index: 2;
     top: 12em;
@@ -33,11 +33,11 @@ label:first-child {
 
 @font-face {
     font-family: SweetSensations;
-    src: url(src/assets/SweetSensations.ttf);
+    src: url(src/assets/fonts/SweetSensations.ttf);
 }
 @font-face {
     font-family: RobagaRounded;
-    src: url(src/assets/RobagaRounded.otf);
+    src: url(src/assets/fonts/RobagaRounded.otf);
 }
 
 .quiz-container {
@@ -119,7 +119,7 @@ body {
 }
 
 body {
-    background: #FFF url("src/assets/Quiz-BAckground-2.jpg") no-repeat center fixed;
+    background: #FFF url("src/assets/pictures/Quiz-BAckground-2.jpg") no-repeat center fixed;
     background-size: cover;
 }
 
