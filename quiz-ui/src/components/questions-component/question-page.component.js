@@ -10,6 +10,7 @@ app.controller('questionsController', ['$scope', '$rootScope', '$location', 'sto
         stompService.publish('/app/getQuestionsRequest', {});
 
     };
+
     self.questionsReceivedSuccessfully = function () {
         stompService.subscribe('/topic/sendQuestionsSuccess', function (sendQuestionsSuccess) {
             self.questions = sendQuestionsSuccess.questions;
@@ -18,6 +19,7 @@ app.controller('questionsController', ['$scope', '$rootScope', '$location', 'sto
             console.log('Question from server: ', sendQuestionsSuccess.questions);
         });
     };
+
     self.questionsReceiveFailed = function () {
         stompService.subscribe('/topic/sendQuestionsFailed', function (sendQuestionsFailed) {
             console.log('Error, questions were not sent');
@@ -26,7 +28,5 @@ app.controller('questionsController', ['$scope', '$rootScope', '$location', 'sto
     };
 
     self.getQuestions();
-
-
 
 }]);

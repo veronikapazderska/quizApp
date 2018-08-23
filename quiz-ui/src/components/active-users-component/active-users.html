@@ -15,10 +15,10 @@
             <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
             <p class="card-text">Age: {{user.age}}
                 <br/> Points: {{user.points}}</p>
-            <a href="#" class="btn btn-dark" ng-click="activeCtrl.inviteUser(user.username)">Invite to Game</a>
+            <a class="btn btn-dark" ng-click="activeCtrl.inviteUser(user.username)" style="color: whitesmoke;">Invite to Game</a>
         </div>
         <div class="w-100 d-none d-lg-block"></div>
     </div>
 </div>
-<invitation ng-if="isInvited" data="mainCtrl.gameRequest"></invitation>
-<decline ng-if="hasDeclined" data="mainCtrl.gameRequest"></decline>
+<invitation ng-if="isInvited" data="activeCtrl.gameRequest"></invitation>
+<!-- <decline ng-if="hasDeclined" data="mainCtrl.gameRequest"></decline> -->

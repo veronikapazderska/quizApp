@@ -1,6 +1,6 @@
 var app = angular.module("app");
 app.controller('loginController',['$scope', '$rootScope','$location', 'stompService', function ($scope, $rootScope, $location, stompService) {
-
+    console.log('Login Component!');
     var self = this;
     if(localStorage.getItem('user')){
         $rootScope.loggedUser = JSON.parse(localStorage.getItem('user'));
@@ -39,9 +39,5 @@ app.controller('loginController',['$scope', '$rootScope','$location', 'stompServ
     self.redirectToRegister = function(){
         $location.path('/register');
     };
-
-    stompService.subscribe("/topic/test", function (message) {
-        console.log(message);
-    });
 
 }]);

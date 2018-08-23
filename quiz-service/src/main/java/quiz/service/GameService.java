@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class GameService {
@@ -26,9 +23,10 @@ public class GameService {
     @Autowired
     private UserService userService;
 
-    @Autowired QuizService quizService;
+    @Autowired
+    private QuizService quizService;
 
-    public Map<String, List<Question2>> questionsForGame;
+    public Map<String, Queue<Question2>> questionsForGame = new HashMap<>();
 
 
     public void handleGameRequest(GameRequest gameRequest) {
@@ -38,13 +36,19 @@ public class GameService {
 
     public void handleGameResponse(GameInvitationResponse gameInvitationResponse) {
         if(gameInvitationResponse.hasConfirmed){
-           // quizService.generateQuestions();
-            messagingTemplate.convertAndSend("/topic/gameStarts/" + gameInvitationResponse.getSender() + gameInvitationResponse.getReceiver());
+            final String gameStartsTopic = gameInvitationResponse.getSender() + "-" + gameInvitationResponse.getReceiver();
+            questionsForGame.put(gameStartsTopic, new LinkedList<>(quizService.generateQuestions()));
+            //TODO: fill the array list with questions
+
+            messagingTemplate.convertAndSend("/topic/gameStarts/" + gameStartsTopic, gameInvitationResponse);
         }
         else{
             messagingTemplate.convertAndSend("/topic/gameResponse/" + gameInvitationResponse.getSender(), gameInvitationResponse);
         }
     }
 
+    public Question2 getQuestionByTopic(String topic) {
+        return questionsForGame.get(topic).poll();
+    }
 
 }

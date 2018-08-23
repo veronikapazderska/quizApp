@@ -72,6 +72,15 @@ public class UserService {
                 .points(123)
                 .isActive(false)
                 .build());
+        this.registeredUsers.add(User.builder()
+                .username("qwer")
+                .password("qwer")
+                .firstName("Test2")
+                .lastName("User2")
+                .age(25)
+                .points(125)
+                .isActive(false)
+                .build());
     }
 
 

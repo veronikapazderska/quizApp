@@ -8,6 +8,23 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
         $scope.$apply();
     });
 
+    stompService.subscribe('/topic/gameRequest/' + $rootScope.loggedUser.username, function (gameRequest) {
+        if(gameRequest.body) {
+            gameRequest = JSON.parse(gameRequest.body);
+        }              
+        self.sender = gameRequest.sender;
+        console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
+        if (gameRequest.receiver == $rootScope.loggedUser.username) {
+            self.gameRequest = gameRequest;
+            $rootScope.isInvited = true;
+            $scope.$apply();
+        }
+       if(gameRequest.sender == $rootScope.loggedUser.username){
+            $rootScope.hasDeclined = true;
+        } 
+    });
+
+
     stompService.publish('/app/activeUsersRequest', {});
 
     self.redirectToQuiz = function() {
@@ -16,8 +33,6 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
 
     self.logOut = function () {
         stompService.subscribe("/topic/logOut/" + $rootScope.loggedUser.username, function (logoutResponse) {
-            console.log("Local Storage");
-            console.log(logoutResponse);
             localStorage.setItem("user", "");
             $location.path('/');
             $scope.$apply();
@@ -27,20 +42,19 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
     };
 
     self.inviteUser = function(username) {
-        var gameRequest = {};
-        gameRequest.sender = $rootScope.loggedUser.username;
-        gameRequest.receiver = username;
-        console.log("Sender is " + gameRequest.sender + " and receiver is " + gameRequest.receiver);
+        var gameRequest = {
+            "sender": $rootScope.loggedUser.username,
+            "receiver": username
+        };
 
         stompService.subscribe('/topic/gameResponse/' + gameRequest.sender, function(gameResponse){
-            if(gameResponse.hasConfirmed){
-                //TODO: navigate to quiz page
-                $location.path('/takeQuiz');
-                $scope.$apply();
-            }
-            else {
-                //TODO: handle negative answer - pop-up or sth else
-            }
+            //TODO: Handle negative response
+        });
+
+        stompService.subscribe(`/topic/gameStarts/${gameRequest.sender}-${gameRequest.receiver}`, function(gameInvitationResponse){
+            $rootScope.topic = `${gameRequest.sender}-${gameRequest.receiver}`;
+            $location.path('/takeQuiz');
+            $scope.$apply();
         });
 
         stompService.publish("/app/gameRequest", gameRequest);
