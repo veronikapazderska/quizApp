@@ -1,6 +1,6 @@
 package quiz.service;
 
-import api.question.Question2;
+import api.question.Question;
 import api.question.QuestionRequest;
 import api.question.SendQuestionsFailed;
 import org.slf4j.Logger;
@@ -24,7 +24,7 @@ public class QuizService {
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
-    public List<Question2> questions = new ArrayList<>();
+    public List<Question> questions = new ArrayList<>();
 
 
     private List<String> ans = new ArrayList<>();
@@ -35,7 +35,7 @@ public class QuizService {
         ans.add("Havana");
         ans.add("Santiago");
         ans.add("Caracas");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("What is the capital of Chile?")
                 .category("Geography")
                 .correctAnswer("Santiago")
@@ -48,7 +48,7 @@ public class QuizService {
         ans.add("Bull");
         ans.add("Horse");
         ans.add("Eagle");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("A minotaur is half human half what?")
                 .category("Mythology")
                 .correctAnswer("Bull")
@@ -60,7 +60,7 @@ public class QuizService {
         ans.add("Zodiac");
         ans.add("Tiger Mafia");
         ans.add("The Union");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("In Marvel Comics, Taurus is the founder and leader of which criminal organization?")
                 .category("Entertainment")
                 .correctAnswer("Zodiac")
@@ -72,7 +72,7 @@ public class QuizService {
         ans.add("Atari");
         ans.add("Apple");
         ans.add("Commodore");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?")
                 .category("Science")
                 .correctAnswer("Apple")
@@ -84,7 +84,7 @@ public class QuizService {
         ans.add("Snake");
         ans.add("Bull");
         ans.add("Horse");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("Which animal features on the logo for Abarth, the motorsport division of Fiat?")
                 .category("Vehicles")
                 .correctAnswer("Scorpion")
@@ -96,7 +96,7 @@ public class QuizService {
         ans.add("Angelina Jolie");
         ans.add("Catherine Zeta-Jones");
         ans.add("Jennifer Aniston");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("Which actress married Michael Douglas in 2000?")
                 .category("Entertainment")
                 .correctAnswer("Catherine Zeta-Jones")
@@ -108,7 +108,7 @@ public class QuizService {
         ans.add("15");
         ans.add("90");
         ans.add("40");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("In Roman Numerals, what does XL equate to?")
                 .category("Science")
                 .correctAnswer("40")
@@ -120,7 +120,7 @@ public class QuizService {
         ans.add("Global Meridian Time");
         ans.add("General Median Time");
         ans.add("Glasgow Man Time");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("What do the letters in the GMT time zone stand for?")
                 .category("Geography")
                 .correctAnswer("Greenwich Mean Time")
@@ -132,7 +132,7 @@ public class QuizService {
         ans.add("Jupiter");
         ans.add("Vulcan");
         ans.add("Mercury");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("Who was the Roman god of fire?")
                 .category("Mythology")
                 .correctAnswer("Vulcan")
@@ -144,7 +144,7 @@ public class QuizService {
         ans.add("Hercules");
         ans.add("Orpheus");
         ans.add("Daedalus");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("Which figure from Greek mythology traveled to the underworld to return his wife Eurydice to the land of the living?")
                 .category("Mythology")
                 .correctAnswer("Orpheus")
@@ -156,7 +156,7 @@ public class QuizService {
         ans.add("Dr. No");
         ans.add("From Russia With Love");
         ans.add("Thunderball");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("What was the first James Bond film?")
                 .category("Entertainment")
                 .correctAnswer("Dr. No")
@@ -168,7 +168,7 @@ public class QuizService {
         ans.add("AC/DC");
         ans.add("Metallica");
         ans.add("Red Hot Chili Peppers");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("Which of these bands is the oldest?")
                 .category("Entertainment")
                 .correctAnswer("Pink Floyd")
@@ -180,7 +180,7 @@ public class QuizService {
         ans.add("Processor");
         ans.add("Hard Drive");
         ans.add("Video Card");
-        this.questions.add(Question2.builder()
+        this.questions.add(Question.builder()
                 .questionText("Generally, which component of a computer draws the most power?")
                 .category("Science")
                 .correctAnswer("Video Card")
@@ -190,12 +190,12 @@ public class QuizService {
     }
 
 
-    public List<Question2> generateQuestions() {
+    public List<Question> generateQuestions() {
 
         if (questions != null && !questions.isEmpty()) {
             Collections.shuffle(questions);
             int randomSeriesLength = 3;
-            final List<Question2> questionsToSend = questions.subList(0, randomSeriesLength);
+            final List<Question> questionsToSend = questions.subList(0, randomSeriesLength);
             this.logger.info(questionsToSend.toString());
             //final SendQuestionsSuccess sendQuestionsSuccess = SendQuestionsSuccess.builder().questions(questionsToSend).build();
             //this.messagingTemplate.convertAndSend("/topic/sendQuestionsSuccess", sendQuestionsSuccess);
@@ -209,7 +209,7 @@ public class QuizService {
     }
 
     public void handleQuestionRequest(QuestionRequest questionRequest) {
-        final Question2 questionToSend = gameService.getQuestionByTopic(questionRequest.getTopic());
+        final Question questionToSend = gameService.getQuestionByTopic(questionRequest.getTopic());
         messagingTemplate.convertAndSend("/topic/questionResponse/" + questionRequest.getTopic(), questionToSend);
     }
 

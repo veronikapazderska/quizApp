@@ -1,9 +1,8 @@
 package quiz.service;
 
-import api.game.Game;
 import api.game.GameInvitationResponse;
 import api.game.GameRequest;
-import api.question.Question2;
+import api.question.Question;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class GameService {
     @Autowired
     private QuizService quizService;
 
-    public Map<String, Queue<Question2>> questionsForGame = new HashMap<>();
+    public Map<String, Queue<Question>> questionsForGame = new HashMap<>();
 
 
     public void handleGameRequest(GameRequest gameRequest) {
@@ -47,7 +46,7 @@ public class GameService {
         }
     }
 
-    public Question2 getQuestionByTopic(String topic) {
+    public Question getQuestionByTopic(String topic) {
         return questionsForGame.get(topic).poll();
     }
 

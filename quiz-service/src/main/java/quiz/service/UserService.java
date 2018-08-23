@@ -1,6 +1,5 @@
 package quiz.service;
 
-import api.question.Question2;
 import api.user.ActiveUser;
 import api.user.ActiveUsers;
 import api.user.User;
@@ -32,7 +31,7 @@ public class UserService {
 
     private List<User> registeredUsers = new ArrayList<>();
 
-    //private List<Question2> questions = new ArrayList<>();
+    //private List<Question> questions = new ArrayList<>();
 
     private ActiveUsers activeUsers = ActiveUsers.builder().activeUsers(new ArrayList<>()).build();
 

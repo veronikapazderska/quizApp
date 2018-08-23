@@ -13,12 +13,19 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     });
 
     self.sendQuestionToCheck = function () {
-        console.log(self.selected);
-    }
+        self.answerChosen = self.question.possibleAnswers[self.selected];
+        if(self.answerChosen===self.question.correctAnswer){
+            alert("Correct answer");
+        }
+        else {
+            alert("Wrong answer");
+        }
+
+    };
 
     self.select = function (numberSelected) {
-        self.selected = numberSelected;
-    }
+        self.selected = numberSelected;        
+    };
 
     stompService.publish('/app/requestQuestion', { "topic": $rootScope.topic });
 
