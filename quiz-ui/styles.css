@@ -62,7 +62,7 @@ label:first-child {
 }
 .quiz-btn {
     background-color: transparent;
-    border: 1px solid white;
+    border: 3px solid white;
     margin-bottom: 1em;
     border-radius: 24px;
 }
@@ -148,7 +148,29 @@ button {
     border-radius: 4px !important;
     cursor: pointer;
     width: 100%;
-    opacity: 0.6;
+    opacity: 1;
+}
+
+.question-answers {
+    display: block;
+    background: #ced4da;
+    padding: 1em;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 31em;
+    height: 3.5em;
+    margin-bottom: 2em;
+}
+
+.question-answers:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.selected-question {
+    background-color: #2F83DD;
+    color: white !important;
 
 }
 
@@ -156,14 +178,8 @@ button:hover {
     opacity: 0.8;
 }
 
-
 :focus {
     outline:none !important;
-}
-.quiz-btn:focus {
-    background-color: white;
-    color: black;
-    font-weight: bold;
 }
 
 .btn {

@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09211beb-6171-40c8-9cf1-4ede32707b51" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/question/QuestionRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/QuizWebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/QuizWebSocketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/GameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/QuizService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/QuizService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz-service/target/classes/quiz/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-service/target/classes/quiz/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-ui/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/active-users-component/active-users.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/login-component/login-page.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/questions-component/question-page.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/questions-component/question-page.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/questions-component/question-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/questions-component/question-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/quiz-component/quiz-page.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/quiz-component/quiz-page.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz-ui/src/components/quiz-component/quiz-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/src/components/quiz-component/quiz-page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz-ui/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/quiz-ui/styles.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -65,8 +52,8 @@
       <file leaf-file-name="QuizService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/QuizService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="211" column="71" selection-start-line="211" selection-start-column="53" selection-end-line="211" selection-end-column="71" />
+            <state relative-caret-position="129">
+              <caret line="200" column="105" lean-forward="true" selection-start-line="200" selection-start-column="105" selection-end-line="200" selection-end-column="105" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -561,7 +548,7 @@
       <workItem from="1534828193036" duration="8298000" />
       <workItem from="1534847787192" duration="3818000" />
       <workItem from="1534914751128" duration="13657000" />
-      <workItem from="1535000669413" duration="14528000" />
+      <workItem from="1535000669413" duration="14810000" />
     </task>
     <task id="LOCAL-00001" summary="Change styles for the login and register page">
       <created>1534342019069</created>
@@ -689,11 +676,18 @@
       <option name="project" value="LOCAL" />
       <updated>1534946772580</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="implement new game start and load same question for both users">
+      <created>1535031231802</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1535031231802</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176121000" />
+    <option name="totallyTimeSpent" value="176403000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -705,8 +699,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -725,8 +718,8 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="8" weight="0.32900432" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.39502165" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2943723" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.52380955" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2943723" />
       <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32995737" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32900432" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.512987" />
@@ -829,7 +822,8 @@
     <MESSAGE value="Notification for new game invitation" />
     <MESSAGE value="fix bug in registration form" />
     <MESSAGE value="implement game response" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement game response" />
+    <MESSAGE value="implement new game start and load same question for both users" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement new game start and load same question for both users" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1149,13 +1143,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/question/QuestionsRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" selection-start-line="6" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/controller/QuizWebSocketController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1196,10 +1183,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/quiz-websocket-api/src/main/java/api/question/QuestionsRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" selection-start-line="6" selection-end-line="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/quiz-service/src/main/java/quiz/service/QuizService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="211" column="71" selection-start-line="211" selection-start-column="53" selection-end-line="211" selection-end-column="71" />
+        <state relative-caret-position="129">
+          <caret line="200" column="105" lean-forward="true" selection-start-line="200" selection-start-column="105" selection-end-line="200" selection-end-column="105" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
