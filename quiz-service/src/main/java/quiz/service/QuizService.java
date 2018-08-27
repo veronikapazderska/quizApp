@@ -1,6 +1,7 @@
 package quiz.service;
 
 import api.question.Question;
+import api.question.QuestionAnswer;
 import api.question.QuestionRequest;
 import api.question.SendQuestionsFailed;
 import org.slf4j.Logger;
@@ -10,9 +11,7 @@ import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class QuizService {
@@ -24,10 +23,12 @@ public class QuizService {
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
-    public List<Question> questions = new ArrayList<>();
-
+    private List<Question> questions = new ArrayList<>();
 
     private List<String> ans = new ArrayList<>();
+    private Map<String, Integer> answers;
+    private Map<String, Integer> requests;
+    private Map<String, Integer> results = new HashMap<>();
 
     @PostConstruct
     public void init() {
@@ -194,7 +195,7 @@ public class QuizService {
 
         if (questions != null && !questions.isEmpty()) {
             Collections.shuffle(questions);
-            int randomSeriesLength = 3;
+            int randomSeriesLength = 4;
             final List<Question> questionsToSend = questions.subList(0, randomSeriesLength);
             this.logger.info(questionsToSend.toString());
             //final SendQuestionsSuccess sendQuestionsSuccess = SendQuestionsSuccess.builder().questions(questionsToSend).build();
@@ -208,10 +209,71 @@ public class QuizService {
         return null;
     }
 
-    public void handleQuestionRequest(QuestionRequest questionRequest) {
-        final Question questionToSend = gameService.getQuestionByTopic(questionRequest.getTopic());
-        messagingTemplate.convertAndSend("/topic/questionResponse/" + questionRequest.getTopic(), questionToSend);
+    public synchronized void handleQuestionRequest(QuestionRequest questionRequest) {
+        if (this.requests == null) {
+            this.requests = new HashMap<>();
+            this.requests.put(questionRequest.topic, 1);
+        } else {
+            if (this.requests.containsKey(questionRequest.getTopic())) {
+                if (this.requests.get(questionRequest.getTopic()) == 1) {
+                    final Question questionToSend = gameService.getQuestionByTopic(questionRequest.getTopic());
+                    if (questionToSend != null) {
+                        messagingTemplate.convertAndSend("/topic/questionResponse/" + questionRequest.getTopic(), questionToSend);
+                        this.requests.put(questionRequest.getTopic(), 2);
+                    } else {
+                        //TODO: publish game over message
+                    }
+                } else {
+                    this.requests.put(questionRequest.getTopic(), this.requests.get(questionRequest.getTopic()) - 1);
+                }
+            }
+        }
     }
 
 
+    public void handleQuestionAnswerRequest(QuestionAnswer questionAnswer) {
+        final QuestionRequest questionRequest = QuestionRequest.builder().topic(questionAnswer.getTopic()).build();
+        if (this.answers == null) {
+            this.answers = new HashMap<>();
+            this.answers.put(questionAnswer.topic, 1);
+        } else {
+            if (this.answers.get(questionAnswer.topic) == null) {
+                this.answers.put(questionAnswer.topic, 1);
+            } else {
+                if (this.answers.get(questionAnswer.topic) == 1) {
+                    this.checkAnswer(questionAnswer);
+                    this.answers.put(questionAnswer.topic, 2);
+                } else {
+                    this.answers.put(questionAnswer.topic, this.answers.get(questionAnswer.topic) - 1);
+                    this.checkAnswer(questionAnswer);
+                }
+            }
+        }
+        this.handleQuestionRequest(questionRequest);
+    }
+
+    private void checkAnswer(QuestionAnswer questionAnswer) {
+       /* for (Question question : this.questions) {
+            if (question.questionText.equals(questionAnswer.getQuestionText())) {
+                if (questionAnswer.getCorrectAnswer().equals(question.getCorrectAnswer())) {
+                    if (this.results.containsKey(questionAnswer.getUsername())) {
+                        this.results.put(questionAnswer.getUsername(), this.results.get(questionAnswer.getUsername()) + 10);
+                    } else {
+                        this.results.put(questionAnswer.getUsername(), 10);
+                    }
+                    messagingTemplate.convertAndSend("/topic/correctAnswer/" + questionAnswer.getUsername() + "/" + questionAnswer.getCorrectAnswer(), questionAnswer);
+                }
+            }
+        }*/
+
+       if(questionAnswer.getCorrectAnswer().equals(questionAnswer.getAnswerChosen())){
+           if (this.results.containsKey(questionAnswer.getUsername())) {
+               this.results.put(questionAnswer.getUsername(), this.results.get(questionAnswer.getUsername()) + 10);
+           } else {
+               this.results.put(questionAnswer.getUsername(), 10);
+           }
+           messagingTemplate.convertAndSend("/topic/correctAnswer/" + questionAnswer.getUsername() + "/" + questionAnswer.getCorrectAnswer(), questionAnswer);
+       }
+
+    }
 }

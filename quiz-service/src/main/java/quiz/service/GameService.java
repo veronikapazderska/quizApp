@@ -37,8 +37,6 @@ public class GameService {
         if(gameInvitationResponse.hasConfirmed){
             final String gameStartsTopic = gameInvitationResponse.getSender() + "-" + gameInvitationResponse.getReceiver();
             questionsForGame.put(gameStartsTopic, new LinkedList<>(quizService.generateQuestions()));
-            //TODO: fill the array list with questions
-
             messagingTemplate.convertAndSend("/topic/gameStarts/" + gameStartsTopic, gameInvitationResponse);
         }
         else{

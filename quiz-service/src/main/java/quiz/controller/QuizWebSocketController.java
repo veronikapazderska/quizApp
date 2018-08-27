@@ -2,6 +2,7 @@ package quiz.controller;
 
 import api.game.GameInvitationResponse;
 import api.game.GameRequest;
+import api.question.QuestionAnswer;
 import api.question.QuestionRequest;
 import api.question.QuestionsRequest;
 import org.slf4j.Logger;
@@ -29,6 +30,13 @@ public class QuizWebSocketController {
     public void handleQuestionRequest(@Payload QuestionRequest questionRequest){
         quizService.handleQuestionRequest(questionRequest);
     }
+
+    @MessageMapping("/answerQuestion")
+    public void handleQuestionAnswer(@Payload QuestionAnswer questionAnswer){
+        quizService.handleQuestionAnswerRequest(questionAnswer);
+
+    }
+
 
 
 }
