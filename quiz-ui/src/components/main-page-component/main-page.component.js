@@ -19,15 +19,12 @@ app.controller('mainPageController', ['$scope', '$rootScope', '$location', '$uib
                     gameRequest = JSON.parse(gameRequest.body);
                 }              
                 self.sender = gameRequest.sender;
-                console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
+                //console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
                 if (gameRequest.receiver == $rootScope.loggedUser.username) {
                     self.gameRequest = gameRequest;
                     $rootScope.isInvited = true;
                     $scope.$apply();
                 }
-               if(gameRequest.sender == $rootScope.loggedUser.username){
-                    $rootScope.hasDeclined = true;
-                } 
             });
         }
         else {

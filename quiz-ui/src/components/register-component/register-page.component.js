@@ -28,7 +28,7 @@ app.controller('registerController', ['$scope', '$rootScope', '$location', 'stom
     };
 
     self.registrationFailed = function() {
-        console.log("Metoda se vika");
+        //console.log("Metoda se vika");
         stompService.subscribe("/topic/regFailed/" + $scope.username, function (registerFailed) {
             self.errorMessage = registerFailed.message;
             $scope.$apply();

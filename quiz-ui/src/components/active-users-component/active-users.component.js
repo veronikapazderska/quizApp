@@ -22,7 +22,6 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
        
     });
 
-
     stompService.publish('/app/activeUsersRequest', {});
 
     self.redirectToQuiz = function() {
