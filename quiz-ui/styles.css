@@ -171,7 +171,11 @@ button {
 .selected-question {
     background-color: #2F83DD;
     color: white !important;
+}
 
+.correct-answer {
+    background-color: green;
+    color: white !important;
 }
 
 button:hover {

@@ -269,11 +269,13 @@ public class QuizService {
        if(questionAnswer.getCorrectAnswer().equals(questionAnswer.getAnswerChosen())){
            if (this.results.containsKey(questionAnswer.getUsername())) {
                this.results.put(questionAnswer.getUsername(), this.results.get(questionAnswer.getUsername()) + 10);
+               this.logger.info("The results are: " + this.results.toString());
            } else {
                this.results.put(questionAnswer.getUsername(), 10);
+               this.logger.info("2 The results are: " + this.results.toString());
            }
-           messagingTemplate.convertAndSend("/topic/correctAnswer/" + questionAnswer.getUsername() + "/" + questionAnswer.getCorrectAnswer(), questionAnswer);
        }
-
+       //messagingTemplate.convertAndSend("/topic/correctAnswer/" + questionAnswer.getUsername() + "/" + questionAnswer.getCorrectAnswer(), questionAnswer);
     }
+
 }
