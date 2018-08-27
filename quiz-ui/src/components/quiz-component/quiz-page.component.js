@@ -1,9 +1,10 @@
 var app = angular.module("app");
-app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompService', function ($scope, $rootScope, $location, stompService) {
+app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompService', function ($scope, $rootScope, $location, stompService, data2) {
     var self = this;
     self.isSelected = false;
     self.correct = null;
     self.correctAnswerIndex = null;
+    self.isGameOver = false;
     if (!$rootScope.topic) {
         $location.path("/main");
     }
@@ -15,8 +16,11 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
         $scope.$apply();
     });
 
-    stompService.subscribe('/topic/gameOver', function (gameOverResponse) {
 
+    stompService.subscribe(`/topic/gameOver/${$rootScope.topic}`, function (gameOverResponse) {
+        self.isGameOver = true;
+        $scope.$apply();
+        console.log("Game Over");
     });
 
     $scope.init = function () {
@@ -24,6 +28,7 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     }
 
     self.sendQuestionToCheck = function () {
+        self.hasAnswered = true;
         self.answerChosen = self.question.possibleAnswers[self.selected];
         setTimeout(function () {
             for (var i = 0; i < self.question.possibleAnswers.length; i++) {
@@ -38,7 +43,6 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
                     "questionText": self.question.questionText, "correctAnswer": self.question.correctAnswer,
                     "answerChosen": self.answerChosen, "username": $rootScope.loggedUser.username
                 });
-                self.hasAnswered = true;
                 self.answerChosen = null;
                 self.correctAnswerIndex = null;
             }, 3000);

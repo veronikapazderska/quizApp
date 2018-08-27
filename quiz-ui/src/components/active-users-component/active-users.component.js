@@ -19,9 +19,7 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
             $rootScope.isInvited = true;
             $scope.$apply();
         }
-       if(gameRequest.sender == $rootScope.loggedUser.username){
-            $rootScope.hasDeclined = true;
-        } 
+       
     });
 
 
@@ -47,8 +45,15 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
             "receiver": username
         };
 
-        stompService.subscribe('/topic/gameResponse/' + gameRequest.sender, function(gameResponse){
-            //TODO: Handle negative response
+        stompService.subscribe('/topic/gameRefused/' + gameRequest.receiver, function(gameInvitationResponse){
+            if(gameRequest.sender == $rootScope.loggedUser.username){
+                $rootScope.hasDeclined = true;                
+                $scope.$apply();
+                setTimeout(function () {
+                    $rootScope.hasDeclined = false;
+                    $scope.$apply();
+                }, 3000); 
+            }
         });
 
         stompService.subscribe(`/topic/gameStarts/${gameRequest.sender}-${gameRequest.receiver}`, function(gameInvitationResponse){

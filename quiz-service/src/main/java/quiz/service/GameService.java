@@ -40,7 +40,8 @@ public class GameService {
             messagingTemplate.convertAndSend("/topic/gameStarts/" + gameStartsTopic, gameInvitationResponse);
         }
         else{
-            messagingTemplate.convertAndSend("/topic/gameResponse/" + gameInvitationResponse.getSender(), gameInvitationResponse);
+            this.logger.info(gameInvitationResponse.getReceiver());
+            messagingTemplate.convertAndSend("/topic/gameRefused/" + gameInvitationResponse.getReceiver(), gameInvitationResponse);
         }
     }
 

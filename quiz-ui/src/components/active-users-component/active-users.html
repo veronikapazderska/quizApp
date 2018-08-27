@@ -1,24 +1,26 @@
-<div class="row">
-    <div class="col-lg-8 offset-lg-2">
-        <div class="row justify-content-lg-center">
-            <div id="welcome">Active Users</div>
+<div ng-class="{'blurry': isInvited}">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="row justify-content-lg-center">
+                <div id="welcome">Active Users</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button class="log-out-btn" ng-click="activeCtrl.logOut()">Log Out</button>
         </div>
     </div>
-    <div class="col-lg-2">
-        <button class="log-out-btn" ng-click="activeCtrl.logOut()">Log Out</button>
-    </div>
-</div>
-
-<div class="row justify-content-lg-center" ng-repeat="user in activeCtrl.activeUsers">
-    <div class="card col-lg-5" ng-if="loggedUser.username!=user.username">
-        <div class="card-body">
-            <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
-            <p class="card-text">Age: {{user.age}}
-                <br/> Points: {{user.points}}</p>
-            <a class="btn btn-dark" ng-click="activeCtrl.inviteUser(user.username)" style="color: whitesmoke;">Invite to Game</a>
+    
+    <div class="row justify-content-lg-center" ng-repeat="user in activeCtrl.activeUsers">
+        <div class="card col-lg-5" ng-if="loggedUser.username!=user.username">
+            <div class="card-body">
+                <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+                <p class="card-text">Age: {{user.age}}
+                    <br/> Points: {{user.points}}</p>
+                <a class="btn btn-dark" ng-click="activeCtrl.inviteUser(user.username)" style="color: whitesmoke;">Invite to Game</a>
+            </div>
+            <div class="w-100 d-none d-lg-block"></div>
         </div>
-        <div class="w-100 d-none d-lg-block"></div>
     </div>
 </div>
 <invitation ng-if="isInvited" data="activeCtrl.gameRequest"></invitation>
-<!-- <decline ng-if="hasDeclined" data="mainCtrl.gameRequest"></decline> -->
+<decline ng-if="hasDeclined"></decline>

@@ -1,4 +1,4 @@
-.blur{
+.blurry{
     opacity: 0.1;
 }
 
@@ -11,6 +11,15 @@
     top: 12em;
     left: 23em;
 }
+#over{
+    width: 70%;
+    z-index: 2;
+    position: absolute;
+    left: 18em;
+    top: 12em;    
+}
+
+
 #second:hover{
     opacity: 1;
 }

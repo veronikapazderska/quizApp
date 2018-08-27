@@ -1,5 +1,6 @@
 package quiz.service;
 
+import api.game.GameOverResponse;
 import api.question.Question;
 import api.question.QuestionAnswer;
 import api.question.QuestionRequest;
@@ -221,6 +222,8 @@ public class QuizService {
                         messagingTemplate.convertAndSend("/topic/questionResponse/" + questionRequest.getTopic(), questionToSend);
                         this.requests.put(questionRequest.getTopic(), 2);
                     } else {
+                        final GameOverResponse gameOverResponse = GameOverResponse.builder().message("Game Over").build();
+                        messagingTemplate.convertAndSend("/topic/gameOver/" + questionRequest.getTopic(), gameOverResponse);
                         //TODO: publish game over message
                     }
                 } else {

@@ -42,11 +42,10 @@ app.controller('mainPageController', ['$scope', '$rootScope', '$location', '$uib
             $location.path('/quizz');
         };
 
+
         
     self.logOut = function () {
         stompService.subscribe("/topic/logOut/" + $rootScope.loggedUser.username, function (logoutResponse) {
-            console.log("Local Storage");
-            console.log(logoutResponse);
             localStorage.setItem("user", "");
             $location.path('/');
             $scope.$apply();
