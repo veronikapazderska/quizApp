@@ -252,7 +252,11 @@ public class QuizService {
                 }
             }
         }
+        if(this.results != null){
+            this.logger.info("Results: " + this.results.toString());
+        }
         this.handleQuestionRequest(questionRequest);
+
     }
 
     private void checkAnswer(QuestionAnswer questionAnswer) {
@@ -275,8 +279,16 @@ public class QuizService {
                 this.logger.info("The results are: " + this.results.toString());
             } else {
                 this.results.put(questionAnswer.getUsername(), 10);
-                this.logger.info("2 The results are: " + this.results.toString());
+                this.logger.info("The results are: " + this.results.toString());
             }
+        }
+        else {
+            if (this.results.containsKey(questionAnswer.getUsername())) {
+                this.results.put(questionAnswer.getUsername(), this.results.get(questionAnswer.getUsername()) + 0);
+            } else {
+                this.results.put(questionAnswer.getUsername(), 0);
+            }
+
         }
         //messagingTemplate.convertAndSend("/topic/correctAnswer/" + questionAnswer.getUsername() + "/" + questionAnswer.getCorrectAnswer(), questionAnswer);
     }
