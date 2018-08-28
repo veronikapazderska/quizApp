@@ -196,7 +196,8 @@ public class QuizService {
 
         if (questions != null && !questions.isEmpty()) {
             Collections.shuffle(questions);
-            int randomSeriesLength = 4;
+            int randomSeriesLength = 2;
+            //TODO: change back the length to bigger number
             final List<Question> questionsToSend = questions.subList(0, randomSeriesLength);
             this.logger.info(questionsToSend.toString());
             //final SendQuestionsSuccess sendQuestionsSuccess = SendQuestionsSuccess.builder().questions(questionsToSend).build();
@@ -224,7 +225,9 @@ public class QuizService {
                     } else {
                         final GameOverResponse gameOverResponse = GameOverResponse.builder().message("Game Over").build();
                         messagingTemplate.convertAndSend("/topic/gameOver/" + questionRequest.getTopic(), gameOverResponse);
-                        //TODO: publish game over message
+                        if(this.results != null){
+                            messagingTemplate.convertAndSend("/topic/gameResults/" + questionRequest.getTopic(), this.results);
+                        }
                     }
                 } else {
                     this.requests.put(questionRequest.getTopic(), this.requests.get(questionRequest.getTopic()) - 1);
@@ -246,9 +249,6 @@ public class QuizService {
                 this.checkAnswer(questionAnswer);
             } else {
                 if (this.answers.get(questionAnswer.topic) == 1) {
-                   // this.answers.put(questionAnswer.topic, 2);
-                   // this.checkAnswer(questionAnswer);
-
                     this.answers.put(questionAnswer.topic, 2);
                     this.checkAnswer(questionAnswer);
                 } else {
@@ -258,9 +258,7 @@ public class QuizService {
             }
         }
         this.handleQuestionRequest(questionRequest);
-        if(this.results != null){
-            messagingTemplate.convertAndSend("/topic/gameResults/" + questionAnswer.getTopic(), this.results);
-        }
+
 
     }
 

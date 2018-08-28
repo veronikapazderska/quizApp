@@ -4,7 +4,10 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     self.isSelected = false;
     self.correct = null;
     self.correctAnswerIndex = null;
-    self.isGameOver = false;
+    self.isGameOver = false;    
+    self.users = null;
+    self.points = null;
+    self.message = null;
     if (!$rootScope.topic) {
         $location.path("/main");
     }
@@ -16,12 +19,37 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
         $scope.$apply();
     });
 
+    stompService.subscribe(`/topic/gameResults/${$rootScope.topic}`, function(results){
+        self.users = Object.keys(results);
+        self.points = Object.values(results);
+        if(self.points[0] > self.points[1]){
+            if(self.users[0]==$rootScope.loggedUser.username){
+                self.message = "You win!";
+            }
+            else {
+                self.message = "You lost! :(";
+            }            
+        }
+        else if(self.points[1] > self.points[0]){
+            if(self.users[1]==$rootScope.loggedUser.username){
+                self.message = "You win!";
+            }
+            else {
+                self.message = "You lost! :(";
+            }
+        }
+        else{
+            self.message = "It's a tie!"
+        }
+        $scope.$apply();
+    });
 
     stompService.subscribe(`/topic/gameOver/${$rootScope.topic}`, function (gameOverResponse) {
         self.isGameOver = true;
         $scope.$apply();
         console.log("Game Over");
-    });
+    });    
+
 
     $scope.init = function () {
         stompService.publish('/app/requestQuestion', { "topic": $rootScope.topic });
@@ -53,6 +81,10 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     self.select = function (numberSelected) {
         self.selected = numberSelected;
     };
+
+    self.goToLeaderboard = function(){
+        $location.path('/leaderboard');
+    }
 
     $scope.init();
 }]);

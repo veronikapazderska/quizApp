@@ -46,4 +46,5 @@
 
 </div>
 
-<over ng-if="quizCtrl.isGameOver" data2="$ctrl.data2"> </over>
+<!-- <over ng-if="quizCtrl.isGameOver" users="quizCtrl.users" points="quizCtrl.points" message="quizCtrl.message"></over> -->
+<over users="quizCtrl.users" points="quizCtrl.points" message="quizCtrl.message" go-to-leaderboard="quizCtrl.goToLeaderboard()"></over>
