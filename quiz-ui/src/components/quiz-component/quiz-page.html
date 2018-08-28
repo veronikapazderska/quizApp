@@ -11,29 +11,33 @@
             <div class="row justify-content-lg-center">
                 <div id="question-title">{{quizCtrl.question.questionText}}</div>
             </div>
-    
+
             <div class="row">
                 <div class="col-lg-5 offset-lg-1">
-                    <button class="quiz-btn" ng-class="{'selected-question':quizCtrl.selected===0, 'correct-answer': quizCtrl.correctAnswerIndex == 0}" ng-click="quizCtrl.select(0)" id="0" ng-disabled="quizCtrl.hasAnswered">
+                    <button class="quiz-btn" ng-class="{'selected-question':quizCtrl.selected===0, 'correct-answer': quizCtrl.correctAnswerIndex == 0}"
+                        ng-click="quizCtrl.select(0)" id="0" ng-disabled="quizCtrl.hasAnswered">
                         {{quizCtrl.question.possibleAnswers[0]}}</button>
                 </div>
                 <div class="col-lg-5">
-                    <button class="quiz-btn" ng-class="{'selected-question':quizCtrl.selected===1, 'correct-answer': quizCtrl.correctAnswerIndex == 1}" ng-click="quizCtrl.select(1)" id="1" ng-disabled="quizCtrl.hasAnswered">
+                    <button class="quiz-btn" ng-class="{'selected-question':quizCtrl.selected===1, 'correct-answer': quizCtrl.correctAnswerIndex == 1}"
+                        ng-click="quizCtrl.select(1)" id="1" ng-disabled="quizCtrl.hasAnswered">
                         {{quizCtrl.question.possibleAnswers[1]}}</button>
                 </div>
             </div>
-    
+
             <div class="row">
                 <div class="col-lg-5 offset-lg-1">
-                    <button class="quiz-btn" ng-class="{'selected-question':quizCtrl.selected===2, 'correct-answer': quizCtrl.correctAnswerIndex == 2}" ng-click="quizCtrl.select(2)" id="2" ng-disabled="quizCtrl.hasAnswered">
+                    <button class="quiz-btn" ng-class="{'selected-question':quizCtrl.selected===2, 'correct-answer': quizCtrl.correctAnswerIndex == 2}"
+                        ng-click="quizCtrl.select(2)" id="2" ng-disabled="quizCtrl.hasAnswered">
                         {{quizCtrl.question.possibleAnswers[2]}}</button>
                 </div>
                 <div class="col-lg-5">
-                    <button class="quiz-btn" ng-class="{'selected-question':quizCtrl.selected===3, 'correct-answer': quizCtrl.correctAnswerIndex == 3}" ng-click="quizCtrl.select(3)" id="3" ng-disabled="quizCtrl.hasAnswered">
+                    <button class="quiz-btn" ng-class="{'selected-question':quizCtrl.selected===3, 'correct-answer': quizCtrl.correctAnswerIndex == 3}"
+                        ng-click="quizCtrl.select(3)" id="3" ng-disabled="quizCtrl.hasAnswered">
                         {{quizCtrl.question.possibleAnswers[3]}}</button>
                 </div>
             </div>
-    
+
             <div class="row justify-content-lg-center">
                 <div class="col-lg-4">
                     <button id="send-answer-btn" ng-click="quizCtrl.sendQuestionToCheck()" ng-disabled="quizCtrl.hasAnswered">
@@ -47,4 +51,5 @@
 </div>
 
 <!-- <over ng-if="quizCtrl.isGameOver" users="quizCtrl.users" points="quizCtrl.points" message="quizCtrl.message"></over> -->
-<over users="quizCtrl.users" points="quizCtrl.points" message="quizCtrl.message" go-to-leaderboard="quizCtrl.goToLeaderboard()"></over>
+<over ng-if="quizCtrl.isGameOver" users="quizCtrl.users" points="quizCtrl.points" message="quizCtrl.message" go-to-leaderboard="quizCtrl.goToLeaderboard()"
+    go-to-homepage="quizCtrl.goToHomepage()" new-game="quizCtrl.newGame()"></over>

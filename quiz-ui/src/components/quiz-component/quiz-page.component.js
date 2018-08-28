@@ -85,6 +85,12 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     self.goToLeaderboard = function(){
         $location.path('/leaderboard');
     }
+    self.goToHomepage = function(){
+        $location.path('/main');
+    }
+    self.newGame = function(){
+        $location.path('/activeUsers');
+    }
 
     $scope.init();
 }]);

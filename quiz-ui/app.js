@@ -31,6 +31,11 @@ app.config(function($routeProvider) {
             controller: 'activeUsersController',
             controllerAs: 'activeCtrl'
         })
+        .when('/leaderboard', {
+            templateUrl: 'src/components/leaderboard-component/leaderboard.html',
+            controller: 'leaderboardController',
+            controllerAs: 'leaderCtrl'
+        })
         .otherwise({
             template : "<h1 style='color: white'>None</h1><p style='color: white'>Nothing has been selected</p>"
         });
