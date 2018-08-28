@@ -239,23 +239,28 @@ public class QuizService {
         if (this.answers == null) {
             this.answers = new HashMap<>();
             this.answers.put(questionAnswer.topic, 1);
+            this.checkAnswer(questionAnswer);
         } else {
             if (this.answers.get(questionAnswer.topic) == null) {
                 this.answers.put(questionAnswer.topic, 1);
+                this.checkAnswer(questionAnswer);
             } else {
                 if (this.answers.get(questionAnswer.topic) == 1) {
-                    this.checkAnswer(questionAnswer);
+                   // this.answers.put(questionAnswer.topic, 2);
+                   // this.checkAnswer(questionAnswer);
+
                     this.answers.put(questionAnswer.topic, 2);
+                    this.checkAnswer(questionAnswer);
                 } else {
                     this.answers.put(questionAnswer.topic, this.answers.get(questionAnswer.topic) - 1);
                     this.checkAnswer(questionAnswer);
                 }
             }
         }
-        if(this.results != null){
-            this.logger.info("Results: " + this.results.toString());
-        }
         this.handleQuestionRequest(questionRequest);
+        if(this.results != null){
+            messagingTemplate.convertAndSend("/topic/gameResults/" + questionAnswer.getTopic(), this.results);
+        }
 
     }
 
@@ -276,10 +281,8 @@ public class QuizService {
         if(questionAnswer.getCorrectAnswer().equals(questionAnswer.getAnswerChosen())){
             if (this.results.containsKey(questionAnswer.getUsername())) {
                 this.results.put(questionAnswer.getUsername(), this.results.get(questionAnswer.getUsername()) + 10);
-                this.logger.info("The results are: " + this.results.toString());
             } else {
                 this.results.put(questionAnswer.getUsername(), 10);
-                this.logger.info("The results are: " + this.results.toString());
             }
         }
         else {
