@@ -22,6 +22,9 @@ public class QuizService {
     private GameService gameService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
     private List<Question> questions = new ArrayList<>();
@@ -30,6 +33,7 @@ public class QuizService {
     private Map<String, Integer> answers;
     private Map<String, Integer> requests;
     private Map<String, Integer> results = new HashMap<>();
+
 
     @PostConstruct
     public void init() {
@@ -227,6 +231,7 @@ public class QuizService {
                         messagingTemplate.convertAndSend("/topic/gameOver/" + questionRequest.getTopic(), gameOverResponse);
                         if(this.results != null){
                             messagingTemplate.convertAndSend("/topic/gameResults/" + questionRequest.getTopic(), this.results);
+
                         }
                     }
                 } else {
@@ -277,6 +282,7 @@ public class QuizService {
             }
         }
     }
+
 
 
 

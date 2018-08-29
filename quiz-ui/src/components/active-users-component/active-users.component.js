@@ -1,19 +1,25 @@
 var app = angular.module("app");
 app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 'stompService', function ($scope, $rootScope, $location, stompService) {
     var self = this;
+    if(localStorage.getItem('user')){
+        $rootScope.loggedUser = JSON.parse(localStorage.getItem('user'));
+    }
     console.log("Active user is " + $rootScope.loggedUser.username);
     self.activeUsers = [];
+
     stompService.subscribe('/topic/activeUsers', function (activeUsers) {
         self.activeUsers = activeUsers.activeUsers;
         $scope.$apply();
     });
+
+    stompService.publish('/app/activeUsersRequest', {});
 
     stompService.subscribe('/topic/gameRequest/' + $rootScope.loggedUser.username, function (gameRequest) {
         if(gameRequest.body) {
             gameRequest = JSON.parse(gameRequest.body);
         }              
         self.sender = gameRequest.sender;
-        console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
+        //console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
         if (gameRequest.receiver == $rootScope.loggedUser.username) {
             self.gameRequest = gameRequest;
             $rootScope.isInvited = true;
@@ -22,7 +28,7 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
        
     });
 
-    stompService.publish('/app/activeUsersRequest', {});
+  
 
     self.redirectToQuiz = function() {
         $location.path('/takeQuiz');

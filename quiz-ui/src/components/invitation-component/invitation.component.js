@@ -14,6 +14,7 @@ app.component('invitation', {
             stompService.subscribe(`/topic/gameStarts/${self.data.sender}-${self.data.receiver}`, function (gameInvitationResponse){
                 $rootScope.topic = `${self.data.sender}-${self.data.receiver}`;       
                 $location.path('/takeQuiz');
+                $rootScope.isInvited = false;
                 $scope.$apply();
             });
             self.sendGameResponse(true);            

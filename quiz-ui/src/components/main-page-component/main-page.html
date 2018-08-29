@@ -1,42 +1,51 @@
 <div ng-class="{'blurry':isInvited}">
-<div class="row">
-    <div class="col-lg-8 offset-lg-2">
-        <div class="row justify-content-lg-center">
-            <div id="welcome">QuizApp</div>
-        </div>
-    </div>
-    <div class="col-lg-2">
-        <button class="log-out-btn" ng-click="mainCtrl.logOut()">Log Out</button>
-    </div>
-</div>
-
-<div class="row justify-content-lg-center hello-title">
-    <h1>Hello, {{mainCtrl.firstName}} {{mainCtrl.lastName}} </h1>
-</div>
-
-<div class="row"></div>
-
-<div class="row justify-content-lg-center" id="first">
-    <div class="col-lg-8">
-        <div class="card-group row justify-content-lg-center">
-            <div class="card col-lg-4 rounded" ng-click="mainCtrl.redirectToActiveUsers()">
-                <img class="card-img-top" src="src/assets/pictures/users.png" alt="Active users">
-                <div class="card-body">
-                    <h5 class="card-title">Active users</h5>
-                    <p class="card-text">This is a list of all active users which you can invite to start a game.</p>
-                </div>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="card col-lg-4 rounded">
-                <img class="card-img-top" src="src/assets/pictures/questions.jpg" alt="Add a new question">
-                <div class="card-body">
-                    <h5 class="card-title">Add a New Question</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                </div>
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="row justify-content-lg-center">
+                <div id="welcome">QuizApp</div>
             </div>
         </div>
+        <div class="col-lg-2">
+            <button class="log-out-btn" ng-click="mainCtrl.logOut()">Log Out</button>
+        </div>
     </div>
-</div>
+
+    <div class="row justify-content-lg-center hello-title">
+        <h1>Hello, {{mainCtrl.firstName}} {{mainCtrl.lastName}} </h1>
+    </div>
+
+    <div class="row"></div>
+
+    <div class="row justify-content-lg-center" id="first">
+        <div class="col-lg-8">
+            <div class="card-group row justify-content-lg-center">
+                <div class="card col-lg-4 rounded" ng-click="mainCtrl.redirectToActiveUsers()">
+                    <img class="card-img-top" src="src/assets/pictures/users.png" alt="Active users">
+                    <div class="card-body">
+                        <h5 class="card-title">Active users</h5>
+                        <p class="card-text">This is a list of all active users which you can invite to start a game.</p>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+
+                <div class="card col-lg-4 rounded">
+                    <img class="card-img-top" src="src/assets/pictures/questions.jpg" alt="Add a new question">
+                    <div class="card-body">
+                        <h5 class="card-title">Add a New Question</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+                <div class="card col-lg-4 rounded" ng-click="mainCtrl.redirectToLeaderboard()">
+                    <img class="card-img-top" src="src/assets/pictures/leaderboard.jpg" alt="Leaderboard">
+                    <div class="card-body">
+                        <h5 class="card-title">Leaderboard</h5>
+                        <p class="card-text">This is a list of all users, ranked by their points in the game.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <invitation ng-if="isInvited" data="mainCtrl.gameRequest"></invitation>
 <decline ng-if="hasDeclined"></decline>

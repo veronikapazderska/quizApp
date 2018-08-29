@@ -39,6 +39,10 @@ app.controller('mainPageController', ['$scope', '$rootScope', '$location', '$uib
             $location.path('/quizz');
         };
 
+        self.redirectToLeaderboard = function () {
+            $location.path('/leaderboard');
+        }
+
 
         
     self.logOut = function () {

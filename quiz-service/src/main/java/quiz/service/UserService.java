@@ -28,12 +28,13 @@ public class UserService {
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
-    private List<User> registeredUsers = new ArrayList<>();
+    public List<User> registeredUsers = new ArrayList<>();
 
     //private List<Question> questions = new ArrayList<>();
 
     private ActiveUsers activeUsers = ActiveUsers.builder().activeUsers(new ArrayList<>()).build();
-    private HashMap<String, Integer> leaderboard = new HashMap<>();
+    //private HashMap<String, Integer> leaderboard = new HashMap<>();
+    private LeaderboardResponseList leaderboardResponseList = LeaderboardResponseList.builder().leaderboardResponseList(new ArrayList<>()).build();
 
     @PostConstruct
     public void init() {
@@ -87,7 +88,6 @@ public class UserService {
 
         if (checkForUsername(loginRequest.getUsername())) {
             User u = findUserByUsername(loginRequest.getUsername());
-
             if (u.getPassword().equals(loginRequest.getPassword()) && !this.checkForActiveUser(loginRequest.getUsername())) {
                 final LoginSuccessful loginSuccessful = LoginSuccessful.builder().username(u.getUsername())
                         .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints())
@@ -119,10 +119,7 @@ public class UserService {
             this.activeUsers.activeUsers.add(ActiveUser.builder().username(u.getUsername())
                     .firstName(u.getFirstName()).lastName(u.getLastName()).points(u.getPoints()).age(u.getAge()).build());
             final String topic = "/topic/regSuccess/" + registerRequest.getUsername();
-            this.logger.info("Topic: {}", topic);
             messagingTemplate.convertAndSend(topic, registerSuccessful);
-            this.logger.info("User successfully registered!");
-
         }
     }
 
@@ -142,17 +139,23 @@ public class UserService {
 
     public void publishUsersLeaderboard() {
 
-        List<LeaderboardResponse> tempList = new ArrayList<>();
         for(User u : this.registeredUsers){
             LeaderboardResponse leaderboardResponse = LeaderboardResponse.builder()
                     .username(u.getUsername()).points(u.getPoints()).firstName(u.getFirstName())
                     .lastName(u.getLastName()).build();
-            tempList.add(leaderboardResponse);
+           this.leaderboardResponseList.leaderboardResponseList.add(leaderboardResponse);
         }
-        final LeaderboardResponseList leaderboardResponseList = LeaderboardResponseList.builder().leaderboardResponseList(tempList).build();
         messagingTemplate.convertAndSend("/topic/leaderboard", leaderboardResponseList);
-
+        leaderboardResponseList.getLeaderboardResponseList().clear();
     }
+
+    /*public void addPoints(HashMap<String, Integer> results){
+        for(User u : this.registeredUsers){
+            if(results.containsKey(u.getUsername())){
+                u.getPoints()
+            }
+        }
+    }*/
 
     private boolean checkUserRegistration(RegisterRequest registerRequest) {
         if (checkForUsername(registerRequest.getUsername())) {

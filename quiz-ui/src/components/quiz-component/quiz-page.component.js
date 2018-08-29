@@ -19,6 +19,10 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
         $scope.$apply();
     });
 
+    $scope.init = function () {
+        stompService.publish('/app/requestQuestion', { "topic": $rootScope.topic });
+    }
+
     stompService.subscribe(`/topic/gameResults/${$rootScope.topic}`, function(results){
         self.users = Object.keys(results);
         self.points = Object.values(results);
@@ -51,9 +55,7 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     });    
 
 
-    $scope.init = function () {
-        stompService.publish('/app/requestQuestion', { "topic": $rootScope.topic });
-    }
+   
 
     self.sendQuestionToCheck = function () {
         self.hasAnswered = true;
@@ -73,9 +75,9 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
                 });
                 self.answerChosen = null;
                 self.correctAnswerIndex = null;
-            }, 3000);
+            }, 2000);
 
-        }, 3000);
+        }, 2000);
     };
 
     self.select = function (numberSelected) {
