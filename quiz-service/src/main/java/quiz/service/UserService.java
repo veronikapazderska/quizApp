@@ -1,8 +1,6 @@
 package quiz.service;
 
-import api.user.ActiveUser;
-import api.user.ActiveUsers;
-import api.user.User;
+import api.user.*;
 import api.user.login.LoginFailed;
 import api.user.login.LoginRequest;
 import api.user.login.LoginSuccessful;
@@ -19,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -34,6 +33,7 @@ public class UserService {
     //private List<Question> questions = new ArrayList<>();
 
     private ActiveUsers activeUsers = ActiveUsers.builder().activeUsers(new ArrayList<>()).build();
+    private HashMap<String, Integer> leaderboard = new HashMap<>();
 
     @PostConstruct
     public void init() {
@@ -137,6 +137,20 @@ public class UserService {
         final LogoutResponse logoutResponse = LogoutResponse.builder().message("User has logged out").build();
         messagingTemplate.convertAndSend("/topic/logOut/" + logoutRequest.getUsername(), logoutResponse);
         this.logger.info(logoutResponse.message);
+
+    }
+
+    public void publishUsersLeaderboard() {
+
+        List<LeaderboardResponse> tempList = new ArrayList<>();
+        for(User u : this.registeredUsers){
+            LeaderboardResponse leaderboardResponse = LeaderboardResponse.builder()
+                    .username(u.getUsername()).points(u.getPoints()).firstName(u.getFirstName())
+                    .lastName(u.getLastName()).build();
+            tempList.add(leaderboardResponse);
+        }
+        final LeaderboardResponseList leaderboardResponseList = LeaderboardResponseList.builder().leaderboardResponseList(tempList).build();
+        messagingTemplate.convertAndSend("/topic/leaderboard", leaderboardResponseList);
 
     }
 

@@ -4,6 +4,7 @@ package quiz.controller;//import api.user.login.LogoutRequest;
        // import communication.service.websocket.UserService;
 
         import api.user.ActiveUsersRequest;
+        import api.user.LeaderboardRequest;
         import api.user.User;
         import api.user.login.LoginRequest;
         import api.user.logout.LogoutRequest;
@@ -72,5 +73,9 @@ public class UserWebSocketController {
         userService.logOut(logoutRequest);
     }
 
+    @MessageMapping("/leaderboardRequest")
+    public void leaderboardHandler(@Payload LeaderboardRequest leaderboardRequest) {
+        userService.publishUsersLeaderboard();
+    }
 
 }

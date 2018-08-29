@@ -20,6 +20,7 @@ app.directive('over', function () {
                         <h1 class="display-4"><strong>{{ctrl.users[1]}}</strong> - {{ctrl.points[1]}} points</h1>
                         <hr>
                         <h1 class="display-3">{{ctrl.message}}</h1>
+                        <hr>
                         <button type="button" class="btn btn-dark btn-lg" ng-click="ctrl.newGame()">Start New Game</button>
                         <button type="button" class="btn btn-dark btn-lg" ng-click="ctrl.goToLeaderboard()">Go to Leaderboards</button>
                         <button type="button" class="btn btn-dark btn-lg" ng-click="ctrl.goToHomepage()">Go to Homepage</button>

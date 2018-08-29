@@ -258,23 +258,9 @@ public class QuizService {
             }
         }
         this.handleQuestionRequest(questionRequest);
-
-
     }
 
     private void checkAnswer(QuestionAnswer questionAnswer) {
-       /* for (Question question : this.questions) {
-            if (question.questionText.equals(questionAnswer.getQuestionText())) {
-                if (questionAnswer.getCorrectAnswer().equals(question.getCorrectAnswer())) {
-                    if (this.results.containsKey(questionAnswer.getUsername())) {
-                        this.results.put(questionAnswer.getUsername(), this.results.get(questionAnswer.getUsername()) + 10);
-                    } else {
-                        this.results.put(questionAnswer.getUsername(), 10);
-                    }
-                    messagingTemplate.convertAndSend("/topic/correctAnswer/" + questionAnswer.getUsername() + "/" + questionAnswer.getCorrectAnswer(), questionAnswer);
-                }
-            }
-        }*/
 
         if(questionAnswer.getCorrectAnswer().equals(questionAnswer.getAnswerChosen())){
             if (this.results.containsKey(questionAnswer.getUsername())) {
@@ -289,9 +275,9 @@ public class QuizService {
             } else {
                 this.results.put(questionAnswer.getUsername(), 0);
             }
-
         }
-        //messagingTemplate.convertAndSend("/topic/correctAnswer/" + questionAnswer.getUsername() + "/" + questionAnswer.getCorrectAnswer(), questionAnswer);
     }
+
+
 
 }
