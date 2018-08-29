@@ -36,6 +36,11 @@ app.config(function($routeProvider) {
             controller: 'leaderboardController',
             controllerAs: 'leaderCtrl'
         })
+        .when('/newQuestion', {
+            templateUrl: 'src/components/new-question-component/new-question.html',
+            controller: 'newQuestionController',
+            controllerAs: 'newCtrl'
+        })
         .otherwise({
             template : "<h1 style='color: white'>None</h1><p style='color: white'>Nothing has been selected</p>"
         });
