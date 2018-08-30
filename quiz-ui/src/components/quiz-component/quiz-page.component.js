@@ -13,14 +13,16 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     }
     self.question = null;
     self.hasAnswered = false;
+   
     stompService.subscribe(`/topic/questionResponse/${$rootScope.topic}`, function (questionResponse) {
         self.hasAnswered = false;
-        self.question = questionResponse;
+        self.question = questionResponse;      
         $scope.$apply();
-    });
-
-    $scope.init = function () {
-        stompService.publish('/app/requestQuestion', { "topic": $rootScope.topic });
+       
+    }); 
+   
+    $scope.$onInit = function () {
+         stompService.publish('/app/requestQuestion', { "topic": $rootScope.topic });
     }
 
     stompService.subscribe(`/topic/gameResults/${$rootScope.topic}`, function(results){
@@ -49,7 +51,9 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     });
 
     stompService.subscribe(`/topic/gameOver/${$rootScope.topic}`, function (gameOverResponse) {
+
         self.isGameOver = true;
+        $rootScope.topic = null;
         $scope.$apply();
         console.log("Game Over");
     });    
@@ -75,6 +79,8 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
                 });
                 self.answerChosen = null;
                 self.correctAnswerIndex = null;
+                self.selected = null;
+                $scope.$apply();
             }, 2000);
 
         }, 2000);
@@ -91,8 +97,8 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
         $location.path('/main');
     }
     self.newGame = function(){
-        $location.path('/activeUsers');
+        $location.path('/activeUsers');        
     }
 
-    $scope.init();
+    $scope.$onInit();
 }]);

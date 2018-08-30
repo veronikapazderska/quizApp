@@ -2,6 +2,7 @@ package quiz.controller;
 
 import api.game.GameInvitationResponse;
 import api.game.GameRequest;
+import api.question.NewQuestionRequest;
 import api.question.QuestionAnswer;
 import api.question.QuestionRequest;
 import api.question.QuestionsRequest;
@@ -34,7 +35,11 @@ public class QuizWebSocketController {
     @MessageMapping("/answerQuestion")
     public void handleQuestionAnswer(@Payload QuestionAnswer questionAnswer){
         quizService.handleQuestionAnswerRequest(questionAnswer);
+    }
 
+    @MessageMapping("/newQuestionRequest")
+    public void handleNewQuestionRequest(@Payload NewQuestionRequest newQuestionRequest){
+        quizService.handleNewQuestionRequest(newQuestionRequest);
     }
 
 

@@ -43,6 +43,10 @@ app.controller('mainPageController', ['$scope', '$rootScope', '$location', '$uib
             $location.path('/leaderboard');
         }
 
+        self.redirectToNewQuestion = function(){
+            $location.path('/newQuestion');
+        }
+
 
         
     self.logOut = function () {
