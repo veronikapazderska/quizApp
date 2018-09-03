@@ -222,6 +222,7 @@ public class UserService {
                 .points(temp.getPoints() + points)
                 .firstName(temp.getFirstName())
                 .lastName(temp.getLastName())
+                .age(temp.getAge())
                 .isActive(true)
                 .build();
         this.registeredUsers.remove(temp);

@@ -51,15 +51,11 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
     });
 
     stompService.subscribe(`/topic/gameOver/${$rootScope.topic}`, function (gameOverResponse) {
-
         self.isGameOver = true;
         $rootScope.topic = null;
         $scope.$apply();
         console.log("Game Over");
     });    
-
-
-   
 
     self.sendQuestionToCheck = function () {
         self.hasAnswered = true;
@@ -81,7 +77,7 @@ app.controller('quizController', ['$scope', '$rootScope', '$location', 'stompSer
                 self.correctAnswerIndex = null;
                 self.selected = null;
                 $scope.$apply();
-            }, 2000);
+            }, 500);
 
         }, 2000);
     };
