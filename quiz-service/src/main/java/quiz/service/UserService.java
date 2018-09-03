@@ -29,11 +29,7 @@ public class UserService {
     private SimpMessageSendingOperations messagingTemplate;
 
     public List<User> registeredUsers = new ArrayList<>();
-
-    //private List<Question> questions = new ArrayList<>();
-
     private ActiveUsers activeUsers = ActiveUsers.builder().activeUsers(new ArrayList<>()).build();
-    //private HashMap<String, Integer> leaderboard = new HashMap<>();
     private LeaderboardResponseList leaderboardResponseList = LeaderboardResponseList.builder().leaderboardResponseList(new ArrayList<>()).build();
 
     @PostConstruct
@@ -218,37 +214,6 @@ public class UserService {
     }
 
     public void updateUser(String username, Integer points) {
-        // TODO: get user, nabii Iliyan, remove user and create new one with the same data
-//        for(User u : this.registeredUsers){
-//            if(u.getUsername().equals(username)){
-//                final User user = User.builder()
-//                        .username(username)
-//                        .password(u.getPassword())
-//                        .points(u.getPoints() + points)
-//                        .firstName(u.getFirstName())
-//                        .lastName(u.getLastName())
-//                        .isActive(true)
-//                        .isBusy(false)
-//                        .build();
-//                this.registeredUsers.remove(u);
-//                this.registeredUsers.add(user);
-//            }
-//        }
-//
-//        for(ActiveUser activeUser : this.activeUsers.getActiveUsers()){
-//            if(activeUser.getUsername().equals(username)){
-//                final ActiveUser activeUser1 = ActiveUser.builder()
-//                        .username(username)
-//                        .firstName(activeUser.getUsername())
-//                        .lastName(activeUser.getLastName())
-//                        .age(activeUser.getAge())
-//                        .points(activeUser.getPoints() + points)
-//                        .isBusy(false)
-//                        .build();
-//                this.activeUsers.getActiveUsers().remove(activeUser);
-//                this.activeUsers.getActiveUsers().add(activeUser1);
-//            }
-//        }
 
         User temp = this.findUserByUsername(username);
         final User userToAdd = User.builder()
@@ -258,7 +223,6 @@ public class UserService {
                 .firstName(temp.getFirstName())
                 .lastName(temp.getLastName())
                 .isActive(true)
-                .isBusy(false)
                 .build();
         this.registeredUsers.remove(temp);
         this.registeredUsers.add(userToAdd);
@@ -270,7 +234,6 @@ public class UserService {
                 .lastName(tempActive.getLastName())
                 .age(tempActive.getAge())
                 .points(tempActive.getPoints() + points)
-                .isBusy(false)
                 .build();
         this.activeUsers.getActiveUsers().remove(tempActive);
         this.activeUsers.getActiveUsers().add(activeUserToAdd);

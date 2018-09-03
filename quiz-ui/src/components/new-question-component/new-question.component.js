@@ -9,8 +9,9 @@ app.controller('newQuestionController', ['$scope', '$rootScope', '$location', 's
 
     self.message = "";
     self.categories = ["Entertainment", "Science", "Mythology", "Geography", "History"];
+    self.mandatoryMessage = "";
 
-    self.sendQuestion = function () {
+    self.sendQuestion = function () {     
 
         var question = {};
         question.questionText = $scope.questionText;
@@ -20,6 +21,14 @@ app.controller('newQuestionController', ['$scope', '$rootScope', '$location', 's
         question.wrongAnswer2 = $scope.wrongAnswer2;
         question.wrongAnswer3 = $scope.wrongAnswer3;
 
+        
+        if(!$scope.questionText || !$scope.category || !$scope.correctAnswer || !$scope.wrongAnswer1 || !$scope.wrongAnswer2 || !$scope.wrongAnswer3){
+            self.mandatoryMessage = "All fields are required!";
+            $scope.$apply();
+            return;
+        }
+
+
         self.sendQuestionSuccess();
         self.sendQuestionFailed();
 
@@ -28,12 +37,20 @@ app.controller('newQuestionController', ['$scope', '$rootScope', '$location', 's
 
     self.sendQuestionSuccess = function () {
         stompService.subscribe("/topic/sendNewQuestionSuccessful", function (sendNewQuestionSuccessful) {
+            self.mandatoryMessage = "";
             self.message = sendNewQuestionSuccessful.message;
             $scope.$apply();         
             if(self.message!=""){
                 setTimeout(function(){
-                    location.reload(); 
-                }, 1000);
+                    $scope.questionText = "";
+                    $scope.category = "";
+                    $scope.correctAnswer = "";
+                    $scope.wrongAnswer1 = "";
+                    $scope.wrongAnswer2 = "";
+                    $scope.wrongAnswer3 = "";
+                    self.message = "";
+                    $scope.$apply();
+                }, 1500);
             }
         });
     }
@@ -50,7 +67,6 @@ app.controller('newQuestionController', ['$scope', '$rootScope', '$location', 's
             gameRequest = JSON.parse(gameRequest.body);
         }              
         self.sender = gameRequest.sender;
-        //console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
         if (gameRequest.receiver == $rootScope.loggedUser.username) {
             self.gameRequest = gameRequest;
             $rootScope.isInvited = true;

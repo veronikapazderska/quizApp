@@ -1,15 +1,18 @@
 <div ng-class="{'blurry': isInvited}">
     <div class="row">
-        <div class="col-lg-8 offset-lg-2">
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-8">
             <div class="row justify-content-lg-center">
                 <div id="welcome">Active Users</div>
             </div>
         </div>
         <div class="col-lg-2">
+            <button class="log-out-btn" ng-click="activeCtrl.redirectToHome()" style="margin-right: 1px;">Home</button>
+            <button class="log-out-btn" ng-click="activeCtrl.redirectToLeaderboard()" style="margin-right: 1px;">Leaderboard</button>
             <button class="log-out-btn" ng-click="activeCtrl.logOut()">Log Out</button>
         </div>
     </div>
-    
     <div class="row justify-content-lg-center" ng-repeat="user in activeCtrl.activeUsers">
         <div class="card col-lg-5" ng-if="loggedUser.username!=user.username">
             <div class="card-body">

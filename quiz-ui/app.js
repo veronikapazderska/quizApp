@@ -21,11 +21,6 @@ app.config(function($routeProvider) {
             controller: 'mainPageController',
             controllerAs: 'mainCtrl'
         })
-        .when('/quizz', {
-            templateUrl : 'src/components/questions-component/question-page.html',
-            controller: 'questionsController',
-            controllerAs: 'questionCtrl'
-        })
         .when('/activeUsers', {
             templateUrl: 'src/components/active-users-component/active-users.html',
             controller: 'activeUsersController',
@@ -42,7 +37,9 @@ app.config(function($routeProvider) {
             controllerAs: 'newCtrl'
         })
         .otherwise({
-            template : "<h1 style='color: white'>None</h1><p style='color: white'>Nothing has been selected</p>"
+            templateUrl: 'src/components/404-page-component/404.html',
+            controller: 'pageNotFoundController',
+            controllerAs: 'notFoundCtrl'
         });
 
 

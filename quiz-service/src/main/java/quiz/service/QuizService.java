@@ -310,12 +310,10 @@ public class QuizService {
 
         if (questions != null && !questions.isEmpty()) {
             Collections.shuffle(questions);
-            int randomSeriesLength = 1;
+            int randomSeriesLength = 3;
             //TODO: change back the length to bigger number
             final List<Question> questionsToSend = questions.subList(0, randomSeriesLength);
             this.logger.info("The number of questions is " + questions.size());
-            //final SendQuestionsSuccess sendQuestionsSuccess = SendQuestionsSuccess.builder().questions(questionsToSend).build();
-            //this.messagingTemplate.convertAndSend("/topic/sendQuestionsSuccess", sendQuestionsSuccess);
             return questionsToSend;
         }
 
@@ -391,6 +389,7 @@ public class QuizService {
     }
 
     public void handleNewQuestionRequest(NewQuestionRequest newQuestionRequest){
+
         List<String> answers = new ArrayList<>();
         answers.add(newQuestionRequest.correctAnswer);
         answers.add(newQuestionRequest.wrongAnswer1);

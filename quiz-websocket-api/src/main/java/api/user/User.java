@@ -12,8 +12,7 @@ public class User {
     public String firstName;
     public String lastName;
     public int age;
-    public @Setter int points;
+    public int points;
     public boolean isActive;
-    public boolean isBusy;
 
 }

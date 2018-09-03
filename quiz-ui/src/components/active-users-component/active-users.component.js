@@ -32,6 +32,15 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
         $location.path('/takeQuiz');
     };
 
+    self.redirectToHome = function() {
+        $location.path('/main');
+    };
+    
+    self.redirectToLeaderboard = function() {
+        $location.path('/leaderboard');
+    }
+
+
     self.logOut = function () {
         stompService.subscribe("/topic/logOut/" + $rootScope.loggedUser.username, function (logoutResponse) {
             localStorage.setItem("user", "");
@@ -61,6 +70,7 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
 
         stompService.subscribe(`/topic/gameStarts/${gameRequest.sender}-${gameRequest.receiver}`, function(gameInvitationResponse){
             $rootScope.topic = `${gameRequest.sender}-${gameRequest.receiver}`;
+
             $location.path('/takeQuiz');
             $scope.$apply();
         });

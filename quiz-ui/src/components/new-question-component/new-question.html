@@ -1,93 +1,88 @@
 <div ng-class="{'blurry': isInvited}">
-<div class="row">
-    <div class="col-lg-2">
+    <div class="row">
+        <div class="col-lg-2">
         </div>
-<div class="col-lg-8">
-    <div class="row justify-content-lg-center">
-        <div id="welcome">Add Question</div>
+        <div class="col-lg-8">
+            <div class="row justify-content-lg-center">
+                <div id="welcome">Add Question</div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <button class="log-out-btn" ng-click="newCtrl.redirectToHome()" style="margin-right: 1px;">Home</button>
+            <button class="log-out-btn" ng-click="newCtrl.logOut()">Log Out</button>
+        </div>
     </div>
-</div>
-<div class="col-lg-2">
-    <button class="log-out-btn" ng-click="newCtrl.redirectToHome()" style="margin-right: 1px;">Home</button>    
-    <button class="log-out-btn" ng-click="newCtrl.logOut()">Log Out</button>
-</div>
-</div>
-
-<ng-form name="newQuestionForm">
-<div class="row">
-    <div class="col-lg-4 offset-lg-4 quiz-container">
-        <div class="row justify-content-lg-center">
-            <label for="txt">
-                <b>Question Text</b>
-            </label>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <input type="text" placeholder="Enter Question Text" id="txt" ng-model="questionText" ng-required="true" />
+    <div class="row">
+        <div class="col-lg-4 offset-lg-4 quiz-container">
+            <div class="row justify-content-lg-center">
+                <label for="txt">
+                    <b>Question Text</b>
+                </label>
             </div>
-        </div>
-
-        <div class="row justify-content-lg-center">
-            <label for="category">
-                <b>Category</b>
-            </label>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <select ng-model="category" ng-options="category for category in newCtrl.categories" name="cars" id="category" ng-required="true">
-                </select>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="text" placeholder="Enter Question Text" id="txt" ng-model="questionText" />
+                </div>
             </div>
-        </div>
-
-        <div class="row justify-content-lg-center">
-            <label for="correct-answer">
-                <b>Correct Answer</b>
-            </label>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <input type="text" placeholder="Enter the correct answer" id="correct-answer" ng-model="correctAnswer" ng-required="true"
-                />
+            <div class="row justify-content-lg-center">
+                <label for="category">
+                    <b>Category</b>
+                </label>
             </div>
-        </div>
-
-        <div class="row justify-content-lg-center">
-            <label>
-                <b>Other options</b>
-            </label>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <input type="text" placeholder="Enter other options" ng-model="wrongAnswer1" ng-required="true" />
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <select ng-model="category" ng-options="category for category in newCtrl.categories" name="cars" id="category">
+                    </select>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <input type="text" placeholder="Enter other options" ng-model="wrongAnswer2" ng-required="true" />
+            <div class="row justify-content-lg-center">
+                <label for="correct-answer">
+                    <b>Correct Answer</b>
+                </label>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <input type="text" placeholder="Enter other options" ng-model="wrongAnswer3" ng-required="true" />
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="text" placeholder="Enter the correct answer" id="correct-answer" ng-model="correctAnswer" />
+                </div>
             </div>
-        </div>
 
+            <div class="row justify-content-lg-center">
+                <label>
+                    <b>Other options</b>
+                </label>
+            </div>
 
-        <div class="alert alert-info col-lg-10 offset-lg-1" role="alert" ng-show="newCtrl.message">
-            {{newCtrl.message}}!
-        </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="text" placeholder="Enter other options" ng-model="wrongAnswer1" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="text" placeholder="Enter other options" ng-model="wrongAnswer2" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <input type="text" placeholder="Enter other options" ng-model="wrongAnswer3" />
+                </div>
+            </div>
+            <div class="alert alert-info col-lg-10 offset-lg-1" role="alert" ng-show="newCtrl.message">
+                {{newCtrl.message}}!
+            </div>
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <button class="reg-log-btn" ng-click="newCtrl.sendQuestion()">
+                        Send
+                    </button>
+                </div>
+            </div>
 
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <button type="submit" class="reg-log-btn" ng-click="newCtrl.sendQuestion()" ng-disabled="newQuestionForm.$invalid">
-                    Send
-                </button>
+            <div class="alert alert-danger col-lg-10 offset-lg-1" role="alert" ng-show="newCtrl.mandatoryMessage">
+                {{newCtrl.mandatoryMessage}}
             </div>
         </div>
     </div>
-</div>
-</ng-form>
 </div>
 
 <invitation ng-if="isInvited" data="newCtrl.gameRequest"></invitation>

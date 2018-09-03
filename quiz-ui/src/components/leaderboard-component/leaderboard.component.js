@@ -18,14 +18,12 @@ app.controller('leaderboardController', ['$scope', '$rootScope', '$location', 's
             gameRequest = JSON.parse(gameRequest.body);
         }              
         self.sender = gameRequest.sender;
-        //console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
         if (gameRequest.receiver == $rootScope.loggedUser.username) {
             self.gameRequest = gameRequest;
             $rootScope.isInvited = true;
             $scope.$apply();
         }       
     });
-
 
     self.logOut = function () {
         stompService.subscribe("/topic/logOut/" + $rootScope.loggedUser.username, function (logoutResponse) {
@@ -39,7 +37,10 @@ app.controller('leaderboardController', ['$scope', '$rootScope', '$location', 's
 
     self.redirectToHome = function() {
         $location.path('/main');
-    }
+    }    
 
+    self.redirectToActiveUsers = function() {
+        $location.path('/activeUsers');
+    }
 
 }]);
