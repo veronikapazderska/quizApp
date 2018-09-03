@@ -37,5 +37,9 @@ app.controller('leaderboardController', ['$scope', '$rootScope', '$location', 's
         stompService.publish("/app/logoutRequest", {username: $rootScope.loggedUser.username});
     };
 
+    self.redirectToHome = function() {
+        $location.path('/main');
+    }
+
 
 }]);

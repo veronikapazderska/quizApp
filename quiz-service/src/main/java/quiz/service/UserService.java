@@ -45,7 +45,7 @@ public class UserService {
                 .lastName("Pazderska")
                 .age(22)
                 .isActive(false)
-                .points(150).build());
+                .points(100).build());
         this.registeredUsers.add(User.builder()
                 .username("iliyan")
                 .password("iliyan")
@@ -60,7 +60,7 @@ public class UserService {
                 .firstName("Stanislava")
                 .lastName("Zhelyazkova")
                 .age(23)
-                .points(120)
+                .points(100)
                 .isActive(false)
                 .build());
         this.registeredUsers.add(User.builder()
@@ -69,7 +69,7 @@ public class UserService {
                 .firstName("Test")
                 .lastName("User")
                 .age(33)
-                .points(123)
+                .points(100)
                 .isActive(false)
                 .build());
         this.registeredUsers.add(User.builder()
@@ -78,7 +78,7 @@ public class UserService {
                 .firstName("Test2")
                 .lastName("User2")
                 .age(25)
-                .points(125)
+                .points(100)
                 .isActive(false)
                 .build());
     }
@@ -149,14 +149,6 @@ public class UserService {
         leaderboardResponseList.getLeaderboardResponseList().clear();
     }
 
-    /*public void addPoints(HashMap<String, Integer> results){
-        for(User u : this.registeredUsers){
-            if(results.containsKey(u.getUsername())){
-                u.getPoints()
-            }
-        }
-    }*/
-
     private boolean checkUserRegistration(RegisterRequest registerRequest) {
         if (checkForUsername(registerRequest.getUsername())) {
             final RegisterFailed registerFailed = RegisterFailed.builder().message("User with such username already exists").build();
@@ -225,4 +217,62 @@ public class UserService {
         return false;
     }
 
+    public void updateUser(String username, Integer points) {
+        // TODO: get user, nabii Iliyan, remove user and create new one with the same data
+//        for(User u : this.registeredUsers){
+//            if(u.getUsername().equals(username)){
+//                final User user = User.builder()
+//                        .username(username)
+//                        .password(u.getPassword())
+//                        .points(u.getPoints() + points)
+//                        .firstName(u.getFirstName())
+//                        .lastName(u.getLastName())
+//                        .isActive(true)
+//                        .isBusy(false)
+//                        .build();
+//                this.registeredUsers.remove(u);
+//                this.registeredUsers.add(user);
+//            }
+//        }
+//
+//        for(ActiveUser activeUser : this.activeUsers.getActiveUsers()){
+//            if(activeUser.getUsername().equals(username)){
+//                final ActiveUser activeUser1 = ActiveUser.builder()
+//                        .username(username)
+//                        .firstName(activeUser.getUsername())
+//                        .lastName(activeUser.getLastName())
+//                        .age(activeUser.getAge())
+//                        .points(activeUser.getPoints() + points)
+//                        .isBusy(false)
+//                        .build();
+//                this.activeUsers.getActiveUsers().remove(activeUser);
+//                this.activeUsers.getActiveUsers().add(activeUser1);
+//            }
+//        }
+
+        User temp = this.findUserByUsername(username);
+        final User userToAdd = User.builder()
+                .username(username)
+                .password(temp.getPassword())
+                .points(temp.getPoints() + points)
+                .firstName(temp.getFirstName())
+                .lastName(temp.getLastName())
+                .isActive(true)
+                .isBusy(false)
+                .build();
+        this.registeredUsers.remove(temp);
+        this.registeredUsers.add(userToAdd);
+
+        ActiveUser tempActive = this.findActiveUserByUsername(username);
+        final ActiveUser activeUserToAdd = ActiveUser.builder()
+                .username(username)
+                .firstName(tempActive.getFirstName())
+                .lastName(tempActive.getLastName())
+                .age(tempActive.getAge())
+                .points(tempActive.getPoints() + points)
+                .isBusy(false)
+                .build();
+        this.activeUsers.getActiveUsers().remove(tempActive);
+        this.activeUsers.getActiveUsers().add(activeUserToAdd);
+    }
 }

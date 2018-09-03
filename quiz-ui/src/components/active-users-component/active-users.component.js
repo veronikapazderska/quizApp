@@ -18,8 +18,7 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
         if(gameRequest.body) {
             gameRequest = JSON.parse(gameRequest.body);
         }              
-        self.sender = gameRequest.sender;
-        //console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
+        self.sender = gameRequest.sender;       
         if (gameRequest.receiver == $rootScope.loggedUser.username) {
             self.gameRequest = gameRequest;
             $rootScope.isInvited = true;
@@ -27,7 +26,6 @@ app.controller('activeUsersController', ['$scope', '$rootScope', '$location', 's
         }
        
     });
-
   
 
     self.redirectToQuiz = function() {

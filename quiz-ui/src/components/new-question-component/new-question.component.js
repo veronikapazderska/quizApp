@@ -24,17 +24,17 @@ app.controller('newQuestionController', ['$scope', '$rootScope', '$location', 's
         self.sendQuestionFailed();
 
         stompService.publish('/app/newQuestionRequest', question);
-
-        console.log("Message is" + self.message);
     }
 
     self.sendQuestionSuccess = function () {
         stompService.subscribe("/topic/sendNewQuestionSuccessful", function (sendNewQuestionSuccessful) {
             self.message = sendNewQuestionSuccessful.message;
-            $scope.$apply();
-            setTimeout(function () {
-                self.resetForm();
-            }, 1000);
+            $scope.$apply();         
+            if(self.message!=""){
+                setTimeout(function(){
+                    location.reload(); 
+                }, 1000);
+            }
         });
     }
 
@@ -44,6 +44,19 @@ app.controller('newQuestionController', ['$scope', '$rootScope', '$location', 's
             $scope.$apply();
         });
     }
+
+    stompService.subscribe('/topic/gameRequest/' + $rootScope.loggedUser.username, function (gameRequest) {
+        if(gameRequest.body) {
+            gameRequest = JSON.parse(gameRequest.body);
+        }              
+        self.sender = gameRequest.sender;
+        //console.log("Here is a request: " + gameRequest.sender + " and " + gameRequest.receiver);
+        if (gameRequest.receiver == $rootScope.loggedUser.username) {
+            self.gameRequest = gameRequest;
+            $rootScope.isInvited = true;
+            $scope.$apply();
+        }       
+    });
 
     self.logOut = function () {
         stompService.subscribe("/topic/logOut/" + $rootScope.loggedUser.username, function (logoutResponse) {
@@ -58,16 +71,5 @@ app.controller('newQuestionController', ['$scope', '$rootScope', '$location', 's
     self.redirectToHome = function(){
         $location.path('/main');
     }
-
-    self.resetForm = function(){
-        $scope.questionText = '';
-        $scope.category = '';
-        $scope.correctAnswer = '';
-        $scope.wrongAnswer1 = '';
-        $scope.wrongAnswer2 = '';
-        $scope.wrongAnswer3 = '';
-    }
-
-
 
 }]);

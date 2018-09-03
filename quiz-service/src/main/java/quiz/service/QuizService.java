@@ -326,40 +326,44 @@ public class QuizService {
     }
 
     public synchronized void handleQuestionRequest(QuestionRequest questionRequest) {
-        this.logger.info("==================" + questionRequest.toString() + "=======================");
         if (this.requests == null) {
             this.requests = new HashMap<>();
             this.requests.put(questionRequest.topic, 1);
-            this.logger.info("=================== TOVA E PURVIQT IF ========================");
         } else {
             if (this.requests.containsKey(questionRequest.getTopic())) {
-                this.logger.info("================== VLIZA V IF-a =====================");
                 if (this.requests.get(questionRequest.getTopic()) == 1) {
-                    this.logger.info("================ TOPIC = 1 =======================");
                     final Question questionToSend = gameService.getQuestionByTopic(questionRequest.getTopic());
                     if (questionToSend != null) {
                         messagingTemplate.convertAndSend("/topic/questionResponse/" + questionRequest.getTopic(), questionToSend);
                         this.requests.put(questionRequest.getTopic(), 2);
                         this.logger.info(questionToSend.toString());
                     } else {
-                        this.logger.info("===================== EMPPTY==========================");
                         final GameOverResponse gameOverResponse = GameOverResponse.builder().message("Game Over").build();
                         messagingTemplate.convertAndSend("/topic/gameOver/" + questionRequest.getTopic(), gameOverResponse);
                         if(this.results != null){
                             messagingTemplate.convertAndSend("/topic/gameResults/" + questionRequest.getTopic(), this.results);
+                            this.updateUserPoints(questionRequest.getTopic());
+                            this.requests.put(questionRequest.getTopic(), 2);
                         }
                     }
                 } else {
-                    this.logger.info("================ TOPIC = 2 =======================");
                     this.requests.put(questionRequest.getTopic(), this.requests.get(questionRequest.getTopic()) - 1);
                 }
             }
             else {
-                //this.requests.put(questionRequest.getTopic(), )
-            }
-            this.logger.info("================== NE VLIZA V IF-a =====================");
+                this.requests.put(questionRequest.topic, 1);
+            };
         }
 
+    }
+
+    private void updateUserPoints(String topic) {
+        final String username1 = topic.split("-")[0];
+        final String username2 = topic.split("-")[1];
+        this.userService.updateUser(username1, this.results.get(username1));
+        this.userService.updateUser(username2, this.results.get(username2));
+        this.results.remove(username1);
+        this.results.remove(username2);
     }
 
 
